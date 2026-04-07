@@ -19,6 +19,9 @@ import {
   ArrowUpDown,
   Sparkles,
   ShieldCheck,
+  Terminal,
+  Copy,
+  Check,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Idea, IdeaStatus, BuildTime } from "@/lib/ideas-data";
@@ -36,11 +39,12 @@ const STATUS_COLORS: Record<IdeaStatus, { border: string; bg: string; text: stri
   WEAK: { border: "border-l-amber-500", bg: "bg-amber-500/10", text: "text-amber-400", dot: "bg-amber-400" },
   MODERATE: { border: "border-l-blue-500", bg: "bg-blue-500/10", text: "text-blue-400", dot: "bg-blue-400" },
   BORDERLINE: { border: "border-l-zinc-500", bg: "bg-zinc-500/10", text: "text-zinc-400", dot: "bg-zinc-400" },
+  MERGED: { border: "border-l-purple-500", bg: "bg-purple-500/10", text: "text-purple-400", dot: "bg-purple-400" },
 };
 
 const BUILD_LABELS: Record<BuildTime, string> = { weekend: "< 2 days", week: "3-7 days", complex: "1-2 weeks", ai: "2+ weeks (AI)" };
 const BUILD_COLORS: Record<BuildTime, string> = { weekend: "text-emerald-400", week: "text-amber-400", complex: "text-orange-400", ai: "text-violet-400" };
-const STATUS_LABELS: Record<IdeaStatus, string> = { EMPTY: "No competition", WEAK: "Easy to beat", MODERATE: "Beatable", BORDERLINE: "Risky" };
+const STATUS_LABELS: Record<IdeaStatus, string> = { EMPTY: "No competition", WEAK: "Easy to beat", MODERATE: "Beatable", BORDERLINE: "Risky", MERGED: "Merged into another" };
 const PRICING_LABELS: Record<string, string> = { entry: "Entry", standard: "Standard", premium: "Premium" };
 const POLICY_RISK_LABELS: Record<PolicyRisk, string> = { low: "Low policy risk", review: "Needs review", high: "High policy risk" };
 const POLICY_RISK_STYLES: Record<PolicyRisk, string> = {
@@ -99,6 +103,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
   const [expandedRank, setExpandedRank] = useState<number | null>(null);
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
   const [showSortDropdown, setShowSortDropdown] = useState(false);
+  const [blurMode, setBlurMode] = useState(false);
   const expandedRef = useRef<HTMLDivElement>(null);
 
   const categories = useMemo(() => {
@@ -242,6 +247,24 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
               <X className="h-4 w-4" />
             </button>
           )}
+        </div>
+
+        {/* Blur toggle for screenshots */}
+        <div className="flex justify-end">
+          <button
+            onClick={() => setBlurMode(!blurMode)}
+            className={cn(
+              "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border transition-all",
+              blurMode
+                ? "bg-amber-500/20 text-amber-300 border-amber-500/30"
+                : "bg-zinc-900 text-zinc-500 border-zinc-800 hover:text-zinc-300"
+            )}
+          >
+            <span className={cn("w-7 h-4 rounded-full relative transition-colors", blurMode ? "bg-amber-500" : "bg-zinc-700")}>
+              <span className={cn("absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform", blurMode ? "translate-x-3.5" : "translate-x-0.5")} />
+            </span>
+            {blurMode ? "Screenshot mode ON" : "Screenshot mode"}
+          </button>
         </div>
 
         {/* Filter row */}
@@ -457,7 +480,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                   {/* Main info */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-heading font-semibold text-white text-sm md:text-base truncate">
+                      <h3 className={cn("font-heading font-semibold text-white text-sm md:text-base truncate", blurMode && "blur-sm select-none")}>
                         {idea.name}
                       </h3>
                       <span className={cn("shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold border", STATUS_COLORS[idea.status].bg, STATUS_COLORS[idea.status].text, "border-current/20")}>
@@ -469,7 +492,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                         {policyProfile.risk === "high" ? "High policy" : policyProfile.risk === "review" ? "Policy review" : "Standard policy"}
                       </span>
                     </div>
-                    <p className="text-xs text-zinc-500 line-clamp-1">{idea.concept}</p>
+                    <p className={cn("text-xs text-zinc-500 line-clamp-1", blurMode && "blur-sm select-none")}>{idea.concept}</p>
                   </div>
 
                   {/* Desktop stats */}
@@ -533,7 +556,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                           <Timer className="h-3 w-3" />
                           {BUILD_LABELS[idea.buildTime]} build
                         </span>
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-zinc-800 border border-zinc-700 text-zinc-300">
+                        <span className={cn("inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-zinc-800 border border-zinc-700 text-zinc-300", blurMode && "blur-sm select-none")}>
                           <Tag className="h-3 w-3" />
                           {idea.primaryKeyword}
                         </span>
@@ -583,7 +606,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                       {/* Content sections in 2-column layout on desktop */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Left column */}
-                        <div className="space-y-6">
+                        <div className={cn("space-y-6", blurMode && "blur-md select-none pointer-events-none")}>
                           <div>
                             <SectionHeader icon={Zap} label="Concept" />
                             <p className="text-sm text-zinc-300 leading-relaxed">{idea.concept}</p>
@@ -616,7 +639,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                         </div>
 
                         {/* Right column */}
-                        <div className="space-y-6">
+                        <div className={cn("space-y-6", blurMode && "blur-md select-none pointer-events-none")}>
                           <div>
                             <SectionHeader icon={Users} label="Competitors" />
                             {idea.competitors.length === 0 ? (
@@ -695,6 +718,10 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                           </div>
                         </div>
                       </div>
+                      {/* Build Prompt */}
+                      {idea.buildPrompt && !blurMode && (
+                        <BuildPromptSection prompt={idea.buildPrompt} name={idea.name} />
+                      )}
                     </div>
                   </motion.div>
                 )}
@@ -724,6 +751,58 @@ function SectionHeader({ icon: Icon, label }: { icon: React.ComponentType<{ clas
       <Icon className="h-3.5 w-3.5 text-amber-500/60" />
       {label}
     </h4>
+  );
+}
+
+function BuildPromptSection({ prompt, name }: { prompt: string; name: string }) {
+  const [copied, setCopied] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(prompt);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="mt-4 rounded-xl border border-emerald-500/20 bg-emerald-950/20 overflow-hidden">
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="w-full flex items-center justify-between px-4 py-3 hover:bg-emerald-950/30 transition-colors"
+      >
+        <div className="flex items-center gap-2">
+          <Terminal className="h-4 w-4 text-emerald-400" />
+          <span className="text-sm font-semibold text-emerald-400">Build Prompt</span>
+          <span className="text-xs text-emerald-600">Ready to copy → paste into Claude Code</span>
+        </div>
+        <ChevronDown className={cn("h-4 w-4 text-emerald-500 transition-transform", expanded && "rotate-180")} />
+      </button>
+      {expanded && (
+        <div className="px-4 pb-4">
+          <div className="relative">
+            <pre className="text-xs text-zinc-300 bg-zinc-900/80 rounded-lg p-4 overflow-x-auto max-h-96 overflow-y-auto whitespace-pre-wrap font-mono leading-relaxed border border-zinc-800">
+              {prompt}
+            </pre>
+            <button
+              onClick={handleCopy}
+              className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium transition-colors"
+            >
+              {copied ? (
+                <>
+                  <Check className="h-3.5 w-3.5" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <Copy className="h-3.5 w-3.5" />
+                  Copy Prompt
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 

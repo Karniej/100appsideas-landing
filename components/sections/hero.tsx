@@ -80,11 +80,13 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
-              href="#pricing"
+              href="https://shipreactnative.com/#pricing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-base font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-black hover:from-amber-400 hover:to-orange-400 transition-all shadow-lg shadow-amber-500/25"
             >
               <Zap className="h-4 w-4" />
-              Get All 100 Ideas &mdash; $29
+              Get Access via Ship RN
             </a>
             <a
               href="#preview"

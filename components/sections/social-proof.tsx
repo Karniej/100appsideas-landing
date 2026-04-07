@@ -93,10 +93,10 @@ const SocialProofSection = () => {
               </div>
               <div className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800">
                 <div className="text-2xl font-heading font-bold text-amber-400 mb-1">
-                  $29
+                  Bonus
                 </div>
                 <div className="text-zinc-400 text-xs">
-                  One-time purchase
+                  Free with Ship RN + Community
                 </div>
               </div>
             </div>

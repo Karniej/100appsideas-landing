@@ -98,6 +98,28 @@ export default function PolicyGuidePage() {
                         High
                       </div>
                     </div>
+
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {profile.tags.map((tag) => (
+                        <div
+                          key={tag}
+                          className="rounded-full border border-zinc-700 bg-zinc-950 px-2.5 py-1 text-[11px] font-medium text-zinc-300"
+                        >
+                          {POLICY_GUIDES.find((guide) => guide.tag === tag)?.shortLabel}
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-3 space-y-2">
+                      {profile.notes.map((note) => (
+                        <div
+                          key={note}
+                          className="rounded-xl border border-zinc-800 bg-zinc-950/70 px-3 py-2 text-xs leading-relaxed text-zinc-400"
+                        >
+                          {note}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 );
               })}

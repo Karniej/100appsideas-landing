@@ -46,12 +46,6 @@ const Header = () => {
               Preview
             </a>
             <a
-              href="#pricing"
-              className="text-sm text-zinc-400 hover:text-white transition-colors"
-            >
-              Pricing
-            </a>
-            <a
               href="#faq"
               className="text-sm text-zinc-400 hover:text-white transition-colors"
             >
@@ -61,10 +55,12 @@ const Header = () => {
 
           <div className="hidden md:block">
             <a
-              href="#pricing"
+              href="https://shipreactnative.com/#pricing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-amber-500 to-orange-500 text-black hover:from-amber-400 hover:to-orange-400 transition-all"
             >
-              Get the Document
+              Get Access via Ship RN
             </a>
           </div>
 
@@ -101,13 +97,6 @@ const Header = () => {
               Preview
             </a>
             <a
-              href="#pricing"
-              className="block text-sm text-zinc-400 hover:text-white transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Pricing
-            </a>
-            <a
               href="#faq"
               className="block text-sm text-zinc-400 hover:text-white transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -115,11 +104,13 @@ const Header = () => {
               FAQ
             </a>
             <a
-              href="#pricing"
+              href="https://shipreactnative.com/#pricing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full text-center px-5 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-amber-500 to-orange-500 text-black"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Get the Document
+              Get Access via Ship RN
             </a>
           </motion.div>
         )}

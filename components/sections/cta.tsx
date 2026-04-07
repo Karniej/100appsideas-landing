@@ -29,13 +29,18 @@ const CtaSection = () => {
             just have to build.
           </p>
           <a
-            href="#pricing"
+            href="https://shipreactnative.com/#pricing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-black hover:from-amber-400 hover:to-orange-400 transition-all shadow-lg shadow-amber-500/25"
           >
             <Zap className="h-5 w-5" />
-            Get All 100 Ideas &mdash; $29
+            Get Access via Ship React Native
             <ArrowRight className="h-4 w-4" />
           </a>
+          <p className="text-xs text-zinc-500 mt-4">
+            Included free with Ship React Native + Community ($299)
+          </p>
         </motion.div>
       </div>
     </section>

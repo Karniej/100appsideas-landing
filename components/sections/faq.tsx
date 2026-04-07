@@ -7,9 +7,9 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "What format is the document?",
+    question: "How do I access the ideas?",
     answer:
-      "It's a PDF. All 100 ideas with keyword data, competitor analysis, pricing, implementation groups, and the ranked list.",
+      "After buying Ship React Native + Community, you'll get an access code in your welcome email. Enter it at 100appideas.com/ideas to browse all 100 ideas with filters, search, and full breakdowns — keyword data, competitor analysis, pricing, and implementation groups.",
   },
   {
     question: "How were the ideas validated?",
@@ -22,9 +22,9 @@ const faqs = [
       "The keyword data is iOS App Store specific. But the ideas themselves? Most work just as well on Android. The concepts, pricing models, and competition gaps don't care what platform you're on.",
   },
   {
-    question: "Will someone else build these if I buy the document?",
+    question: "Will someone else build these if I get access?",
     answer:
-      "Honestly? Probably. But the App Store is huge and most people who buy research docs never ship anything. There are 100 ideas here — even if 10 people buy this, they'd each pick different ones. And execution matters way more than the idea.",
+      "Honestly? Probably. But the App Store is huge and most people who read research docs never ship anything. There are 100 ideas here — even if 10 people pick from this list, they'd each choose different ones. And execution matters way more than the idea.",
   },
   {
     question: "How current is the data?",
@@ -39,12 +39,12 @@ const faqs = [
   {
     question: "What if I'm not satisfied?",
     answer:
-      "All sales are final since it's a digital download. But scroll up — the preview shows exactly what each idea looks like in the doc. You can see the level of detail before you buy.",
+      "Access to this research is bundled with Ship React Native + Community. Refund policy is governed by Ship React Native — see their terms at shipreactnative.com. Scroll up for the preview so you can see the level of detail before purchasing.",
   },
   {
     question: "Can I share this with my team?",
     answer:
-      "It's for personal use. If you want to share it with a team, reach out and we'll sort out a team license.",
+      "Your access code is tied to your Ship React Native purchase and intended for personal use. For team licenses, email contact@shipreactnative.com.",
   },
 ];
 

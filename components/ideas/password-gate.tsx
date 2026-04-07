@@ -3,7 +3,8 @@
 import { useState, useEffect, type ReactNode, type FormEvent } from "react";
 import { Lock } from "lucide-react";
 
-const ACCESS_PASSWORD = "100APPS2026";
+const ACCESS_PASSWORD =
+  process.env.NEXT_PUBLIC_IDEAS_PASSWORD || "SRN-ideas-2026q2-a8k3";
 const STORAGE_KEY = "ideas-access";
 
 interface PasswordGateProps {

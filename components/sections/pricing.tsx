@@ -13,6 +13,8 @@ import {
   ListOrdered,
   Clock,
   Target,
+  Lock,
+  ArrowRight,
 } from "lucide-react";
 
 const features = [
@@ -35,7 +37,10 @@ const PricingSection = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="pricing" className="py-24 px-4 bg-background border-t border-zinc-800/50">
+    <section
+      id="pricing"
+      className="py-24 px-4 bg-background border-t border-zinc-800/50"
+    >
       <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,17 +48,19 @@ const PricingSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-500 border border-amber-500/20 mb-6">
-            One-Time Purchase
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-500 border border-amber-500/20 mb-6">
+            <Lock className="h-3 w-3" />
+            Exclusive bonus
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Get the complete{" "}
+            Included with{" "}
             <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text">
-              research document
+              Ship React Native + Community
             </span>
           </h2>
           <p className="text-zinc-400 text-lg">
-            One purchase. Instant access. No subscription.
+            This research isn&apos;t sold separately. It&apos;s a bonus for
+            Ship React Native + Community buyers.
           </p>
         </motion.div>
 
@@ -67,15 +74,16 @@ const PricingSection = () => {
           <div className="absolute -top-20 -right-20 w-60 h-60 bg-amber-500/10 rounded-full blur-[80px]"></div>
 
           <div className="relative">
-            <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-5xl md:text-6xl font-heading font-bold">
-                $29
-              </span>
-              <span className="text-zinc-500 text-lg">one-time</span>
+            <div className="mb-8">
+              <p className="text-sm text-amber-400 uppercase tracking-wider font-semibold mb-2">
+                What you get
+              </p>
+              <p className="text-zinc-300">
+                The complete 100 App Ideas research document, plus everything
+                in the Ship React Native production boilerplate and 1 year of
+                private Discord community access.
+              </p>
             </div>
-            <p className="text-zinc-400 mb-8">
-              That&apos;s less than $0.29 per idea
-            </p>
 
             <div className="space-y-3 mb-8">
               {features.map((feature) => (
@@ -89,28 +97,19 @@ const PricingSection = () => {
             </div>
 
             <a
-              href="https://buy.stripe.com/placeholder"
+              href="https://shipreactnative.com/#pricing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full px-8 py-4 rounded-full text-base font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-black hover:from-amber-400 hover:to-orange-400 transition-all shadow-lg shadow-amber-500/25"
             >
               <Zap className="h-5 w-5" />
-              Get All 100 Ideas Now
+              Get Ship React Native + Community
+              <ArrowRight className="h-4 w-4" />
             </a>
 
             <p className="text-center text-xs text-zinc-500 mt-4">
-              Instant PDF delivery. Secure checkout via Stripe.
-            </p>
-
-            <p className="text-center text-xs text-zinc-400 mt-3">
-              Plus access to the{" "}
-              <a
-                href="/ideas"
-                className="text-amber-500 hover:text-amber-400 underline underline-offset-2 transition-colors"
-              >
-                interactive ideas browser
-              </a>{" "}
-              with filters, search, and full breakdowns.
+              Includes the boilerplate, 100 App Ideas, Discord community, and
+              lifetime updates.
             </p>
           </div>
         </motion.div>
