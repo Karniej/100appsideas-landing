@@ -54,7 +54,7 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
           >
-            40 Validated App Ideas With
+            48 Validated App Ideas With
             <br />
             <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text">
               Real App Store Data

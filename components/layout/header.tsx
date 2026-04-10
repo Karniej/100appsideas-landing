@@ -28,7 +28,7 @@ const Header = () => {
           <Link href="/" className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-amber-500" />
             <span className="font-heading font-bold text-lg">
-              40 Validated App Ideas
+              48 Validated App Ideas
             </span>
           </Link>
 

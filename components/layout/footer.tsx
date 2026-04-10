@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-amber-500" />
-            <span className="font-heading font-semibold">40 Validated App Ideas</span>
+            <span className="font-heading font-semibold">48 Validated App Ideas</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-zinc-500">
             <a
@@ -26,7 +26,7 @@ const Footer = () => {
             </a>
           </div>
           <p className="text-sm text-zinc-600">
-            &copy; {new Date().getFullYear()} 40 Validated App Ideas. All rights
+            &copy; {new Date().getFullYear()} 48 Validated App Ideas. All rights
             reserved.
           </p>
         </div>

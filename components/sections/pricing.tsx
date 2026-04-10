@@ -79,7 +79,7 @@ const PricingSection = () => {
                 What you get
               </p>
               <p className="text-zinc-300">
-                The complete 40 Validated App Ideas research document, plus everything
+                The complete 48 Validated App Ideas research document, plus everything
                 in the Ship React Native production boilerplate and 1 year of
                 private Discord community access.
               </p>
@@ -108,7 +108,7 @@ const PricingSection = () => {
             </a>
 
             <p className="text-center text-xs text-zinc-500 mt-4">
-              Includes the boilerplate, 40 Validated App Ideas, Discord community, and
+              Includes the boilerplate, 48 Validated App Ideas, Discord community, and
               lifetime updates.
             </p>
           </div>
