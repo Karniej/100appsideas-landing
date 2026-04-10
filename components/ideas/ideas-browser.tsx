@@ -35,16 +35,16 @@ import {
 type SortOption = "rank" | "popularity" | "difficulty" | "score" | "competition";
 
 const STATUS_COLORS: Record<IdeaStatus, { border: string; bg: string; text: string; dot: string }> = {
-  EMPTY: { border: "border-l-emerald-500", bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-400" },
+  SHIPPED: { border: "border-l-emerald-500", bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-400" },
   WEAK: { border: "border-l-amber-500", bg: "bg-amber-500/10", text: "text-amber-400", dot: "bg-amber-400" },
   MODERATE: { border: "border-l-blue-500", bg: "bg-blue-500/10", text: "text-blue-400", dot: "bg-blue-400" },
-  BORDERLINE: { border: "border-l-zinc-500", bg: "bg-zinc-500/10", text: "text-zinc-400", dot: "bg-zinc-400" },
-  MERGED: { border: "border-l-purple-500", bg: "bg-purple-500/10", text: "text-purple-400", dot: "bg-purple-400" },
+  STRONG: { border: "border-l-orange-500", bg: "bg-orange-500/10", text: "text-orange-400", dot: "bg-orange-400" },
+  DEAD: { border: "border-l-red-500", bg: "bg-red-500/10", text: "text-red-400", dot: "bg-red-400" },
 };
 
 const BUILD_LABELS: Record<BuildTime, string> = { weekend: "< 2 days", week: "3-7 days", complex: "1-2 weeks", ai: "2+ weeks (AI)" };
 const BUILD_COLORS: Record<BuildTime, string> = { weekend: "text-emerald-400", week: "text-amber-400", complex: "text-orange-400", ai: "text-violet-400" };
-const STATUS_LABELS: Record<IdeaStatus, string> = { EMPTY: "No competition", WEAK: "Easy to beat", MODERATE: "Beatable", BORDERLINE: "Risky", MERGED: "Merged into another" };
+const STATUS_LABELS: Record<IdeaStatus, string> = { SHIPPED: "Already shipped", WEAK: "Easy to beat", MODERATE: "Beatable", STRONG: "Strong competition", DEAD: "No search volume" };
 const PRICING_LABELS: Record<string, string> = { entry: "Entry", standard: "Standard", premium: "Premium" };
 const POLICY_RISK_LABELS: Record<PolicyRisk, string> = { low: "Low policy risk", review: "Needs review", high: "High policy risk" };
 const POLICY_RISK_STYLES: Record<PolicyRisk, string> = {
@@ -181,25 +181,25 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
         <div className="p-4 rounded-xl bg-zinc-900/50 border border-emerald-500/20">
           <div className="text-center">
             <div className="text-2xl md:text-3xl font-heading font-bold text-emerald-400">
-              {statusCounts["EMPTY"] || 0}
+              {statusCounts["WEAK"] || 0}
             </div>
-            <div className="text-xs text-zinc-500 mt-0.5">No Competition</div>
+            <div className="text-xs text-zinc-500 mt-0.5">Weak Competition</div>
           </div>
         </div>
         <div className="p-4 rounded-xl bg-zinc-900/50 border border-amber-500/20">
           <div className="text-center">
             <div className="text-2xl md:text-3xl font-heading font-bold text-amber-400">
-              {statusCounts["WEAK"] || 0}
-            </div>
-            <div className="text-xs text-zinc-500 mt-0.5">Easy to Beat</div>
-          </div>
-        </div>
-        <div className="p-4 rounded-xl bg-zinc-900/50 border border-blue-500/20">
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-heading font-bold text-blue-400">
               {statusCounts["MODERATE"] || 0}
             </div>
-            <div className="text-xs text-zinc-500 mt-0.5">Beatable</div>
+            <div className="text-xs text-zinc-500 mt-0.5">Moderate</div>
+          </div>
+        </div>
+        <div className="p-4 rounded-xl bg-zinc-900/50 border border-orange-500/20">
+          <div className="text-center">
+            <div className="text-2xl md:text-3xl font-heading font-bold text-orange-400">
+              {statusCounts["STRONG"] || 0}
+            </div>
+            <div className="text-xs text-zinc-500 mt-0.5">Strong</div>
           </div>
         </div>
         <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-700 col-span-2 md:col-span-1">
@@ -218,7 +218,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
           <div>
             <div className="inline-flex items-center gap-2 text-sm font-medium text-amber-300">
               <ShieldCheck className="h-4 w-4" />
-              Policy coverage for all 100 ideas
+              Policy coverage for all 40 ideas
             </div>
             <p className="mt-1 text-sm text-zinc-400">
               Each idea now gets reusable policy tags, a submission risk level, and launch-note guidance.
@@ -272,10 +272,9 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
           {/* Competition level pills */}
           {([
             { key: "ALL", label: "All", desc: null },
-            { key: "EMPTY", label: "No competition", desc: "0-50 reviews on top app" },
-            { key: "WEAK", label: "Easy to beat", desc: "Top app has < 500 reviews" },
-            { key: "MODERATE", label: "Beatable", desc: "Established but vulnerable" },
-            { key: "BORDERLINE", label: "Risky", desc: "Higher competition, still viable" },
+            { key: "WEAK", label: "Weak", desc: "Top app has < 500 reviews or < 4.0 rating" },
+            { key: "MODERATE", label: "Moderate", desc: "Established but beatable" },
+            { key: "STRONG", label: "Strong", desc: "Well-served niche, needs strong differentiator" },
           ] as const).map((s) => (
             <button
               key={s.key}

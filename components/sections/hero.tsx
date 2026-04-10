@@ -44,7 +44,7 @@ const HeroSection = () => {
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-500 border border-amber-500/20">
               <Search className="h-3 w-3" />
-              125 ideas researched, 24 dropped &mdash; 100 that actually hold up
+              118 ideas researched, 78 dropped &mdash; 40 verified with real Astro data
             </span>
           </motion.div>
 
@@ -54,10 +54,10 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
           >
-            100 App Ideas With
+            40 Validated App Ideas With
             <br />
             <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text">
-              Almost No Competition
+              Real App Store Data
             </span>
           </motion.h1>
 
@@ -67,10 +67,10 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl text-zinc-400 max-w-2xl mx-auto"
           >
-            I spent weeks running 65K+ App Store keywords through{" "}
+            Every keyword verified via live{" "}
             <a href="https://tryastro.app" target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:text-amber-300 underline underline-offset-2">Astro</a>
-            {" "}(the ASO research tool) so you don&apos;t have to. Real
-            competitors, real review counts, real ratings &mdash; not vibes.
+            {" "}MCP API. 250+ keywords checked, 26 dead ideas removed, 5 already shipped.
+            Real pop/diff scores, real competitors, real review counts &mdash; not vibes.
           </motion.p>
 
           <motion.div
@@ -112,7 +112,7 @@ const HeroSection = () => {
             </div>
             <div className="flex items-center gap-2">
               <BarChart3 className="h-4 w-4 text-amber-500" />
-              <span className="text-zinc-300">65K+ keywords</span>
+              <span className="text-zinc-300">Astro MCP verified</span>
             </div>
           </motion.div>
         </div>
@@ -127,9 +127,9 @@ const HeroSection = () => {
             <div className="inline-flex p-3 rounded-lg bg-amber-500/10 mb-4">
               <Search className="h-6 w-6 text-amber-500" />
             </div>
-            <div className="text-3xl font-heading font-bold mb-1">65,000+</div>
+            <div className="text-3xl font-heading font-bold mb-1">250+</div>
             <p className="text-sm text-zinc-400">
-              Keywords analyzed across 260+ App Store categories
+              Keywords verified via live Astro MCP API
             </p>
           </div>
 
@@ -137,9 +137,9 @@ const HeroSection = () => {
             <div className="inline-flex p-3 rounded-lg bg-amber-500/10 mb-4">
               <Target className="h-6 w-6 text-amber-500" />
             </div>
-            <div className="text-3xl font-heading font-bold mb-1">21</div>
+            <div className="text-3xl font-heading font-bold mb-1">5</div>
             <p className="text-sm text-zinc-400">
-              Ideas where the top &ldquo;competitor&rdquo; has 0-1 reviews
+              Ideas already shipped to the App Store
             </p>
           </div>
 
@@ -147,9 +147,9 @@ const HeroSection = () => {
             <div className="inline-flex p-3 rounded-lg bg-amber-500/10 mb-4">
               <BarChart3 className="h-6 w-6 text-amber-500" />
             </div>
-            <div className="text-3xl font-heading font-bold mb-1">24</div>
+            <div className="text-3xl font-heading font-bold mb-1">26</div>
             <p className="text-sm text-zinc-400">
-              Ideas cut because they couldn&apos;t survive scrutiny
+              Dead ideas removed (pop &le; 5, no search volume)
             </p>
           </div>
         </motion.div>

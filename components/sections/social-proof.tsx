@@ -5,13 +5,13 @@ import { useInView } from "react-intersection-observer";
 import { Check } from "lucide-react";
 
 const proofPoints = [
-  "I have 8+ apps on the App Store — this is the research I do before building",
-  "All keyword data pulled from Astro, a professional ASO tool",
-  "Every competitor checked by hand against live App Store search results",
-  "Started with 125 ideas, killed 24 that didn't hold up (12 for iOS limits, 12 for crowded keywords)",
-  "12 borderline apps left in but flagged — you'll know exactly what the risks are",
-  "Pricing tables for every app: which tier, what to charge, and why",
-  "Implementation groups so you can build one app and quickly ship the next 5",
+  "I have 8+ apps on the App Store — 5 from this list are already shipped (Fishify, ReWordly, VoxDub, DebatePro, PurrSense)",
+  "Every keyword verified via live Astro MCP API — real pop/diff scores, not estimates",
+  "250+ keywords checked across 118 app ideas — only 40 survived validation",
+  "26 dead ideas removed (primary keyword pop <= 5 with no viable alternative)",
+  "Competition data from actual App Store search results — top 5 apps per keyword",
+  "Ranked by pop/diff ratio — highest opportunity first, not random order",
+  "Template groups so you can build one app and rapidly clone the next 5",
 ];
 
 const SocialProofSection = () => {
@@ -36,9 +36,9 @@ const SocialProofSection = () => {
               </span>
             </h2>
             <p className="text-zinc-400 text-lg mb-8">
-              I didn&apos;t brainstorm these in a Google Doc. I ran 65K+
-              keywords through ASO tools, checked every competitor on the App
-              Store, and killed anything that didn&apos;t have a real gap.
+              I didn&apos;t brainstorm these in a Google Doc. I verified every
+              keyword via Astro MCP API, checked every competitor on the App
+              Store, and killed anything that didn&apos;t have real search volume.
             </p>
             <div className="space-y-4">
               {proofPoints.map((point) => (
@@ -60,36 +60,36 @@ const SocialProofSection = () => {
           >
             <div className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800">
               <div className="text-4xl font-heading font-bold bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text mb-2">
-                65,000+
+                250+
               </div>
               <div className="text-zinc-400 text-sm">
-                App Store keywords run through Astro across 260+ categories
+                Keywords verified via live Astro MCP API
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800">
                 <div className="text-2xl font-heading font-bold text-emerald-400 mb-1">
-                  260+
+                  40
                 </div>
                 <div className="text-zinc-400 text-xs">
-                  Categories searched
+                  Validated ideas remaining
                 </div>
               </div>
               <div className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800">
                 <div className="text-2xl font-heading font-bold text-emerald-400 mb-1">
-                  21
+                  26
                 </div>
                 <div className="text-zinc-400 text-xs">
-                  Zero-competition markets
+                  Dead ideas removed
                 </div>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800">
                 <div className="text-2xl font-heading font-bold text-amber-400 mb-1">
-                  13
+                  5
                 </div>
-                <div className="text-zinc-400 text-xs">Weekend builds</div>
+                <div className="text-zinc-400 text-xs">Already shipped</div>
               </div>
               <div className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800">
                 <div className="text-2xl font-heading font-bold text-amber-400 mb-1">

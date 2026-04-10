@@ -23,51 +23,51 @@ const items = [
   },
   {
     icon: BarChart3,
-    title: "Keyword Data",
+    title: "Verified Keyword Data",
     description:
-      "Popularity and difficulty scores from Astro (the #1 ASO research tool), plus 10+ target keywords per app.",
+      "Real popularity and difficulty scores verified via live Astro MCP API — not estimates or guesses.",
   },
   {
     icon: Users,
     title: "Competitor Analysis",
     description:
-      "Actual competitor names, review counts, and star ratings. No guessing.",
+      "Top 5 App Store search results per keyword — actual names, review counts, and star ratings.",
   },
   {
     icon: DollarSign,
     title: "Per-App Pricing Tables",
     description:
-      "Every app assigned to Premium, Standard, or Entry tier with exact weekly/monthly/annual prices and pricing rationale.",
+      "Every app assigned to Premium, Standard, or Entry tier with exact weekly/monthly/annual prices and trial strategy.",
   },
   {
     icon: Layers,
-    title: "Implementation Groups",
+    title: "Template Groups",
     description:
-      "Apps grouped by shared tech stack. Build one, rapidly clone the next. 10 groups covering all 100 apps.",
+      "Apps grouped by shared codebase: Scorer, AI Camera, Calculator, Content, Interactive Fun, Timer, and Utility templates.",
   },
   {
     icon: Rocket,
     title: "Build Time Estimates",
     description:
-      "Every app categorized: weekend builds (13 apps), week builds (39 apps), complex builds (17 apps), AI builds (17 apps).",
+      "Every app categorized: weekend builds (5 apps), week builds (28 apps), complex builds (7 apps).",
   },
   {
     icon: Clock,
-    title: "Market Assessment",
+    title: "Competition Assessment",
     description:
-      'Each idea classified as EMPTY (21), WEAK (31), MODERATE (18), or BORDERLINE (12) based on competition level.',
+      "Each idea classified as WEAK (14), MODERATE (25), or STRONG (1) based on real competitor data.",
   },
   {
     icon: ListOrdered,
-    title: "Scored & Ranked",
+    title: "Ranked by Pop/Diff Ratio",
     description:
-      "Every idea scored with the same formula (keyword score + competition score) and sorted. The best stuff is at the top.",
+      "Sorted by opportunity — highest pop/diff ratio first. Matcha Finder leads at 7.00 (pop 63, diff 9).",
   },
   {
     icon: ShieldCheck,
-    title: "Policy Review Layer",
+    title: "Dead Ideas Flagged",
     description:
-      "Every idea now includes App Store / Google Play policy tags, risk level, and master launch notes for privacy, billing, AI, age-gating, and safety claims.",
+      "26 ideas with pop <= 5 were removed entirely. You only see the 40 that survived real-data validation.",
   },
 ];
 

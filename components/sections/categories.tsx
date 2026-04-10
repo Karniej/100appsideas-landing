@@ -8,38 +8,28 @@ import {
   Gamepad2,
   Trophy,
   Wrench,
-  MessageSquare,
-  Compass,
   Palette,
-  Scissors,
   GraduationCap,
   Music,
   Trees,
   HardHat,
   Star,
   ListChecks,
-  Snowflake,
-  Sparkles,
 } from "lucide-react";
 
 const categories = [
-  { icon: Camera, name: "AI Identifier Apps", count: 10 },
-  { icon: Heart, name: "Health & Wellness", count: 9 },
-  { icon: Gamepad2, name: "Party & Social Games", count: 6 },
-  { icon: Trophy, name: "Sports Scorekeepers", count: 5 },
-  { icon: Wrench, name: "Utility & Measurement", count: 14 },
-  { icon: MessageSquare, name: "AI Text & Content", count: 3 },
-  { icon: Compass, name: "Lifestyle & Philosophy", count: 1 },
-  { icon: Palette, name: "Niche Interest", count: 7 },
-  { icon: Scissors, name: "Tattoo & Body Art", count: 2 },
-  { icon: GraduationCap, name: "Education & Study", count: 4 },
-  { icon: Music, name: "Audio & Voice", count: 3 },
-  { icon: Trees, name: "Outdoor & Nature", count: 5 },
-  { icon: HardHat, name: "Trade & Professional", count: 4 },
-  { icon: Star, name: "Collectibles & Gamified", count: 2 },
-  { icon: ListChecks, name: "Productivity", count: 4 },
-  { icon: Snowflake, name: "Seasonal & Holiday", count: 1 },
-  { icon: Sparkles, name: "Wellness & Spiritual", count: 5 },
+  { icon: Trophy, name: "Sports Scorers", count: 5 },
+  { icon: Camera, name: "AI Camera Identifiers", count: 5 },
+  { icon: Wrench, name: "Calculators & Tools", count: 5 },
+  { icon: Palette, name: "Content & Reference", count: 7 },
+  { icon: Gamepad2, name: "Interactive Fun", count: 4 },
+  { icon: Heart, name: "Health & Fitness", count: 3 },
+  { icon: HardHat, name: "Business & Trade", count: 3 },
+  { icon: GraduationCap, name: "Education", count: 2 },
+  { icon: Music, name: "Music & Audio", count: 2 },
+  { icon: ListChecks, name: "Productivity & Utility", count: 5 },
+  { icon: Trees, name: "Outdoor & Nature", count: 3 },
+  { icon: Star, name: "Lifestyle", count: 3 },
 ];
 
 const CategoriesSection = () => {
@@ -57,7 +47,7 @@ const CategoriesSection = () => {
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
             Across{" "}
             <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text">
-              18 categories.
+              12 categories.
             </span>
           </h2>
           <p className="text-zinc-400 max-w-xl mx-auto">

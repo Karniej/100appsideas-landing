@@ -25,58 +25,58 @@ type PreviewIdea = {
 const previewIdeas: PreviewIdea[] = [
   {
     rank: 1,
-    name: "Display Tester",
-    pop: 47,
-    diff: 15,
-    competitor: "Display Tester - Ekrania",
-    competitorReviews: "1",
-    competitorRating: "4.0",
-    category: "Utility",
-    status: "EMPTY",
+    name: "Matcha Finder",
+    pop: 63,
+    diff: 9,
+    competitor: "Matcha Map - For Matcha Lovers",
+    competitorReviews: "7",
+    competitorRating: "4.4",
+    category: "Food & Drink",
+    status: "WEAK",
   },
   {
     rank: 2,
-    name: "Heat Index Calculator",
-    pop: 53,
-    diff: 11,
-    competitor: "Heat Index Calculator",
-    competitorReviews: "52",
-    competitorRating: "4.7",
-    category: "Health",
-    status: "WEAK",
+    name: "Mini Golf Scorecard",
+    pop: 44,
+    diff: 9,
+    competitor: "Mini-Golf Score Card",
+    competitorReviews: "3,225",
+    competitorRating: "4.8",
+    category: "Sports",
+    status: "MODERATE",
   },
   {
     rank: 3,
-    name: "Pickleball Scorer",
-    pop: 46,
-    diff: 23,
-    competitor: "Pickleball Scorer",
-    competitorReviews: "0",
-    competitorRating: "-",
-    category: "Sports",
-    status: "EMPTY",
+    name: "ID Scanner Pro",
+    pop: 53,
+    diff: 15,
+    competitor: "ID Scanner Professional",
+    competitorReviews: "3,024",
+    competitorRating: "4.6",
+    category: "Business",
+    status: "MODERATE",
   },
   {
     rank: 4,
-    name: "Stamp Quest",
-    pop: 40,
-    diff: 17,
-    competitor: "Stamp Quest",
-    competitorReviews: "7",
-    competitorRating: "3.4",
-    category: "Collectible",
-    status: "WEAK",
+    name: "Deep Conversation Cards",
+    pop: 44,
+    diff: 13,
+    competitor: "HH Talk - Deep Conversations",
+    competitorReviews: "1,955",
+    competitorRating: "4.7",
+    category: "Entertainment",
+    status: "MODERATE",
   },
   {
     rank: 5,
-    name: "PSAT Score Calculator",
-    pop: 52,
-    diff: 36,
-    competitor: "PSAT Score Calculator",
-    competitorReviews: "0",
-    competitorRating: "-",
-    category: "Education",
-    status: "EMPTY",
+    name: "Hymn Book",
+    pop: 27,
+    diff: 9,
+    competitor: "Gospel Hymn Book + Audio",
+    competitorReviews: "143",
+    competitorRating: "4.2",
+    category: "Books",
+    status: "WEAK",
   },
   {
     rank: 6,
@@ -86,8 +86,8 @@ const previewIdeas: PreviewIdea[] = [
     competitor: "***********",
     competitorReviews: "**",
     competitorRating: "***",
-    category: "Trade",
-    status: "EMPTY",
+    category: "Board",
+    status: "MODERATE",
     blurred: true,
   },
   {
@@ -98,8 +98,8 @@ const previewIdeas: PreviewIdea[] = [
     competitor: "***********",
     competitorReviews: "***",
     competitorRating: "***",
-    category: "Party",
-    status: "WEAK",
+    category: "Education",
+    status: "MODERATE",
     blurred: true,
   },
   {
@@ -111,19 +111,23 @@ const previewIdeas: PreviewIdea[] = [
     competitorReviews: "**",
     competitorRating: "***",
     category: "Sports",
-    status: "WEAK",
+    status: "MODERATE",
     blurred: true,
   },
 ];
 
 function getStatusColor(status: string) {
   switch (status) {
-    case "EMPTY":
+    case "SHIPPED":
       return "text-emerald-400 bg-emerald-500/10 border-emerald-500/20";
     case "WEAK":
       return "text-amber-400 bg-amber-500/10 border-amber-500/20";
     case "MODERATE":
       return "text-blue-400 bg-blue-500/10 border-blue-500/20";
+    case "STRONG":
+      return "text-orange-400 bg-orange-500/10 border-orange-500/20";
+    case "DEAD":
+      return "text-red-400 bg-red-500/10 border-red-500/20";
     default:
       return "text-zinc-400 bg-zinc-500/10 border-zinc-500/20";
   }
@@ -151,8 +155,8 @@ const PreviewSection = () => {
             </span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            These are the top 5. The full doc has all 100 with write-ups,
-            keywords, competitor data, and pricing for each.
+            These are the top 5 by pop/diff ratio. All 40 validated ideas have write-ups,
+            real Astro keyword data, competitor analysis, and pricing.
           </p>
         </motion.div>
 
@@ -295,13 +299,13 @@ const PreviewSection = () => {
                 <Lock className="h-5 w-5 text-zinc-400" />
               </div>
               <p className="text-zinc-400 text-sm">
-                95 more ideas with full details in the complete document
+                35 more validated ideas with full details in the complete document
               </p>
               <a
                 href="#pricing"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-black hover:from-amber-400 hover:to-orange-400 transition-all"
               >
-                Unlock All 100 Ideas
+                Unlock All 40 Ideas
                 <ChevronRight className="h-4 w-4" />
               </a>
             </div>
@@ -317,51 +321,51 @@ const PreviewSection = () => {
         >
           <div className="flex items-center gap-3 mb-6">
             <span className="px-2.5 py-1 rounded text-xs font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20">
-              #1 Ranked
+              #1 Ranked &mdash; Ratio 7.00
             </span>
-            <span className="px-2.5 py-1 rounded text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              EMPTY MARKET
+            <span className="px-2.5 py-1 rounded text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              WEAK COMPETITION
             </span>
           </div>
           <h3 className="font-heading text-2xl font-bold mb-2">
-            Display Tester
+            Matcha Finder
           </h3>
           <p className="text-zinc-400 mb-6">
-            Test your phone/tablet screen for dead pixels, color accuracy,
-            brightness uniformity, burn-in, and touch responsiveness. Essential
-            when buying used devices.
+            Find nearby matcha cafes, rate matcha drinks, track your matcha
+            journey with tasting notes. Target the booming matcha culture among
+            health-conscious millennials and Gen Z.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">Popularity</div>
-              <div className="text-lg font-semibold">47</div>
+              <div className="text-lg font-semibold">63</div>
             </div>
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">Difficulty</div>
-              <div className="text-lg font-semibold text-emerald-400">15</div>
+              <div className="text-lg font-semibold text-emerald-400">9</div>
             </div>
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">
                 Top Competitor Reviews
               </div>
-              <div className="text-lg font-semibold text-emerald-400">1</div>
+              <div className="text-lg font-semibold text-emerald-400">7</div>
             </div>
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">Build Time</div>
-              <div className="text-lg font-semibold">Weekend</div>
+              <div className="text-lg font-semibold">2 Weeks</div>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-2 mb-6">
             {[
-              "display tester",
-              "screen test",
-              "dead pixel test",
-              "screen check",
-              "display test",
-              "pixel test",
-              "burn in test",
+              "matcha",
+              "matcha map",
+              "matcha cafe",
+              "matcha tea",
+              "green tea",
+              "latte finder",
+              "tea shop",
             ].map((kw) => (
               <span
                 key={kw}
@@ -373,8 +377,8 @@ const PreviewSection = () => {
           </div>
 
           <p className="text-sm text-zinc-500 italic">
-            That&apos;s what every idea looks like in the doc &mdash; keywords,
-            numbers, competitors, build notes, and pricing. All 100.
+            That&apos;s what every idea looks like &mdash; real Astro-verified keywords,
+            actual competitors, build notes, and pricing. All 40 validated ideas.
           </p>
         </motion.div>
       </div>

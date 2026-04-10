@@ -11,7 +11,7 @@ import {
 export const metadata = {
   title: "App Policy Master Guide",
   description:
-    "Reusable App Store and Google Play policy guidance mapped across the 100 app ideas dataset.",
+    "Reusable App Store and Google Play policy guidance mapped across the 40 validated app ideas.",
 };
 
 const counts = getPolicyCounts(ideas);
@@ -49,7 +49,7 @@ export default function PolicyGuidePage() {
             Policy coverage for the full app list.
           </h1>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-zinc-400 md:text-lg">
-            This guide turns the app store research into a reusable launch layer for all 100 ideas. Each idea is scored into a low, review, or high policy bucket and tagged with the policy families most likely to matter.
+            This guide turns the app store research into a reusable launch layer for all 40 validated ideas. Each idea is scored into a low, review, or high policy bucket and tagged with the policy families most likely to matter.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">

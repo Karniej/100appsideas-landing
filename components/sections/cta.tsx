@@ -25,7 +25,7 @@ const CtaSection = () => {
             </span>
           </h2>
           <p className="text-lg text-zinc-400 mb-8 max-w-xl mx-auto">
-            100 ideas, real numbers, no filler. The research is done &mdash; you
+            40 validated ideas with real Astro data. The research is done &mdash; you
             just have to build.
           </p>
           <a

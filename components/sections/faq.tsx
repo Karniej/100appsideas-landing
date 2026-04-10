@@ -9,12 +9,17 @@ const faqs = [
   {
     question: "How do I access the ideas?",
     answer:
-      "After buying Ship React Native + Community, you'll get an access code in your welcome email. Enter it at 100appideas.com/ideas to browse all 100 ideas with filters, search, and full breakdowns — keyword data, competitor analysis, pricing, and implementation groups.",
+      "After buying Ship React Native + Community, you'll get an access code in your welcome email. Enter it at 100appideas.com/ideas to browse all 40 validated ideas with filters, search, and full breakdowns — verified keyword data, competitor analysis, pricing, and template groups.",
   },
   {
     question: "How were the ideas validated?",
     answer:
-      "I ran 65,000+ keywords through Astro (ASO tool) across 260+ App Store categories. Then I searched every idea on the actual App Store — checked the competitors, their review counts, their ratings. Anything with a dominant competitor (10K+ reviews) got cut. Two rounds of this. 24 ideas didn't make it.",
+      "Every keyword was verified via the live Astro MCP API — real-time App Store keyword data, not estimates. 250+ keywords checked across 118 app ideas. Competition data comes from actual App Store search results (top 5 apps per keyword). 26 dead ideas (pop <= 5) were removed entirely. Only 40 survived.",
+  },
+  {
+    question: "Have any of these ideas actually been built?",
+    answer:
+      "Yes — 5 apps from this research are already on the App Store: Fishify, ReWordly, VoxDub, DebatePro, and PurrSense. They validate that the methodology works. The remaining 40 are unbuilt opportunities.",
   },
   {
     question: "Are these ideas only for iOS?",
@@ -24,12 +29,12 @@ const faqs = [
   {
     question: "Will someone else build these if I get access?",
     answer:
-      "Honestly? Probably. But the App Store is huge and most people who read research docs never ship anything. There are 100 ideas here — even if 10 people pick from this list, they'd each choose different ones. And execution matters way more than the idea.",
+      "Honestly? Probably. But the App Store is huge and most people who read research docs never ship anything. There are 40 ideas here — even if 10 people pick from this list, they'd each choose different ones. And execution matters way more than the idea.",
   },
   {
     question: "How current is the data?",
     answer:
-      "Research was done in March 2026. Keyword data and competitor counts shift over time, but low-competition niches don't suddenly get crowded overnight. These gaps usually stay open for months. The pricing strategies and build plans don't expire.",
+      "All keyword data was verified via Astro MCP API on April 6, 2026. Keyword data and competitor counts shift over time, but low-competition niches don't suddenly get crowded overnight. These gaps usually stay open for months.",
   },
   {
     question: "Do I need to know how to code?",
@@ -40,11 +45,6 @@ const faqs = [
     question: "What if I'm not satisfied?",
     answer:
       "Access to this research is bundled with Ship React Native + Community. Refund policy is governed by Ship React Native — see their terms at shipreactnative.com. Scroll up for the preview so you can see the level of detail before purchasing.",
-  },
-  {
-    question: "Can I share this with my team?",
-    answer:
-      "Your access code is tied to your Ship React Native purchase and intended for personal use. For team licenses, email contact@shipreactnative.com.",
   },
 ];
 
