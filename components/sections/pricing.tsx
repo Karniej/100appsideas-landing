@@ -18,19 +18,19 @@ import {
 } from "lucide-react";
 
 const features = [
-  { icon: FileText, text: "40 validated app ideas with full write-ups" },
+  { icon: FileText, text: "48 validated app ideas with full write-ups" },
   { icon: BarChart3, text: "Real Astro MCP keyword data (pop + diff scores)" },
   { icon: Users, text: "Competitor names, review counts, and ratings" },
   { icon: DollarSign, text: "What to charge (weekly/monthly/annual) per app" },
   { icon: Target, text: "5-8 target keywords per app" },
   { icon: Layers, text: "Template groups — build one, clone the next" },
   { icon: Clock, text: "Build time: weekend / week / complex" },
-  { icon: ListOrdered, text: "All 40 ranked by pop/diff ratio (best opportunity first)" },
+  { icon: ListOrdered, text: "All 48 ranked by pop/diff ratio (best opportunity first)" },
   {
     icon: Check,
     text: "Competition rated: WEAK / MODERATE / STRONG",
   },
-  { icon: Check, text: "5 already shipped to prove the methodology works" },
+  { icon: Check, text: "6 already shipped to prove the methodology works" },
 ];
 
 const PricingSection = () => {

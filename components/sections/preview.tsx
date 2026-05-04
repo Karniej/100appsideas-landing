@@ -36,47 +36,47 @@ const previewIdeas: PreviewIdea[] = [
   },
   {
     rank: 2,
-    name: "Mini Golf Scorecard",
-    pop: 44,
+    name: "Check Writer",
+    pop: 34,
     diff: 9,
-    competitor: "Mini-Golf Score Card",
-    competitorReviews: "3,225",
-    competitorRating: "4.8",
-    category: "Sports",
-    status: "MODERATE",
+    competitor: "Check Writer: Print Checks",
+    competitorReviews: "304",
+    competitorRating: "4.2",
+    category: "Finance",
+    status: "STRONG",
   },
   {
     rank: 3,
-    name: "ID Scanner Pro",
-    pop: 53,
-    diff: 15,
-    competitor: "ID Scanner Professional",
-    competitorReviews: "3,024",
+    name: "Token Board",
+    pop: 25,
+    diff: 9,
+    competitor: "Token Board GO",
+    competitorReviews: "2,114",
     competitorRating: "4.6",
-    category: "Business",
+    category: "Education",
     status: "MODERATE",
   },
   {
     rank: 4,
-    name: "Deep Conversation Cards",
-    pop: 44,
-    diff: 13,
-    competitor: "HH Talk - Deep Conversations",
-    competitorReviews: "1,955",
-    competitorRating: "4.7",
-    category: "Entertainment",
+    name: "Chess Clock",
+    pop: 47,
+    diff: 17,
+    competitor: "Chess Clock by Chess.com",
+    competitorReviews: "334",
+    competitorRating: "4.6",
+    category: "Board",
     status: "MODERATE",
   },
   {
     rank: 5,
-    name: "Hymn Book",
-    pop: 27,
-    diff: 9,
-    competitor: "Gospel Hymn Book + Audio",
-    competitorReviews: "143",
-    competitorRating: "4.2",
-    category: "Books",
-    status: "WEAK",
+    name: "Heat Index Calculator",
+    pop: 30,
+    diff: 11,
+    competitor: "Heat Safety",
+    competitorReviews: "1,600",
+    competitorRating: "4.6",
+    category: "Weather",
+    status: "STRONG",
   },
   {
     rank: 6,
@@ -155,7 +155,7 @@ const PreviewSection = () => {
             </span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            These are the top 5 by pop/diff ratio. All 40 validated ideas have write-ups,
+            These are the top 5 by pop/diff ratio. All 48 validated ideas have write-ups,
             real Astro keyword data, competitor analysis, and pricing.
           </p>
         </motion.div>
@@ -378,7 +378,7 @@ const PreviewSection = () => {
 
           <p className="text-sm text-zinc-500 italic">
             That&apos;s what every idea looks like &mdash; real Astro-verified keywords,
-            actual competitors, build notes, and pricing. All 40 validated ideas.
+            actual competitors, build notes, and pricing. All 48 validated ideas.
           </p>
         </motion.div>
       </div>
