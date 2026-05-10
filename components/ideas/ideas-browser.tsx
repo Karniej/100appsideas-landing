@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Idea, IdeaStatus, BuildTime } from "@/lib/ideas-data";
+import { generateCodexBuildPrompt } from "@/lib/prompt-generator";
 import {
   POLICY_GUIDE_BY_TAG,
   getPolicyCounts,
@@ -230,6 +231,23 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
           >
             Open policy master guide
           </Link>
+        </div>
+
+        <div className="flex flex-col gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div className="inline-flex items-center gap-2 text-sm font-medium text-emerald-300">
+              <Terminal className="h-4 w-4" />
+              Codex prompts for every idea
+            </div>
+            <p className="mt-1 text-sm text-zinc-400">
+              Expand any idea to copy one complete build prompt with scope, stack, monetization, competition, and policy notes.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 text-xs font-medium text-emerald-300">
+            <span className="rounded-full border border-emerald-500/20 bg-zinc-950 px-3 py-1">Generated live</span>
+            <span className="rounded-full border border-emerald-500/20 bg-zinc-950 px-3 py-1">Policy-aware</span>
+            <span className="rounded-full border border-emerald-500/20 bg-zinc-950 px-3 py-1">Copy-ready</span>
+          </div>
         </div>
 
         {/* Search */}
@@ -449,6 +467,9 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
         {filtered.map((idea, i) => {
           const isExpanded = expandedRank === idea.rank;
           const policyProfile = getPolicyProfile(idea);
+          const buildPrompt = isExpanded
+            ? idea.buildPrompt ?? generateCodexBuildPrompt(idea, policyProfile)
+            : "";
           return (
             <motion.div
               key={idea.rank}
@@ -718,8 +739,8 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                         </div>
                       </div>
                       {/* Build Prompt */}
-                      {idea.buildPrompt && !blurMode && (
-                        <BuildPromptSection prompt={idea.buildPrompt} name={idea.name} />
+                      {!blurMode && (
+                        <BuildPromptSection prompt={buildPrompt} name={idea.name} />
                       )}
                     </div>
                   </motion.div>
@@ -754,53 +775,103 @@ function SectionHeader({ icon: Icon, label }: { icon: React.ComponentType<{ clas
 }
 
 function BuildPromptSection({ prompt, name }: { prompt: string; name: string }) {
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
   const [expanded, setExpanded] = useState(false);
+  const wordCount = useMemo(() => {
+    const trimmed = prompt.trim();
+    return trimmed ? trimmed.split(/\s+/).length : 0;
+  }, [prompt]);
+  const promptId = useMemo(
+    () => `build-prompt-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    [name]
+  );
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(prompt);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setCopyState("copied");
+    } catch {
+      setCopyState("failed");
+    }
+    setTimeout(() => setCopyState("idle"), 2000);
   };
 
   return (
-    <div className="mt-4 rounded-xl border border-emerald-500/20 bg-emerald-950/20 overflow-hidden">
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between px-4 py-3 hover:bg-emerald-950/30 transition-colors"
-      >
-        <div className="flex items-center gap-2">
-          <Terminal className="h-4 w-4 text-emerald-400" />
-          <span className="text-sm font-semibold text-emerald-400">Build Prompt</span>
-          <span className="text-xs text-emerald-600">Ready to copy → paste into Claude Code</span>
+    <div className="mt-4 overflow-hidden rounded-xl border border-emerald-500/20 bg-emerald-950/20">
+      <div className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <button
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          className="flex min-w-0 flex-1 items-center gap-3 text-left"
+          aria-expanded={expanded}
+          aria-controls={promptId}
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-emerald-500/20 bg-emerald-500/10">
+            <Terminal className="h-4 w-4 text-emerald-300" />
+          </span>
+          <span className="min-w-0">
+            <span className="block text-sm font-semibold text-emerald-300">Codex Build Prompt</span>
+            <span className="block truncate text-xs text-emerald-600">
+              Generated from product, market, stack, pricing, and policy data
+            </span>
+          </span>
+          <ChevronDown className={cn("ml-auto h-4 w-4 shrink-0 text-emerald-500 transition-transform", expanded && "rotate-180")} />
+        </button>
+
+        <div className="flex items-center gap-2 sm:shrink-0">
+          <span className="rounded-full border border-emerald-500/20 bg-zinc-950 px-3 py-1.5 text-xs font-medium text-emerald-300">
+            {wordCount.toLocaleString()} words
+          </span>
+          <button
+            type="button"
+            onClick={handleCopy}
+            className={cn(
+              "inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors",
+              copyState === "copied"
+                ? "bg-emerald-500 text-zinc-950"
+                : copyState === "failed"
+                  ? "bg-red-500/15 text-red-300"
+                  : "bg-emerald-500/90 text-zinc-950 hover:bg-emerald-400"
+            )}
+            aria-label={`Copy ${name} build prompt`}
+          >
+            {copyState === "copied" ? (
+              <>
+                <Check className="h-3.5 w-3.5" />
+                Copied
+              </>
+            ) : copyState === "failed" ? (
+              <>
+                <Copy className="h-3.5 w-3.5" />
+                Failed
+              </>
+            ) : (
+              <>
+                <Copy className="h-3.5 w-3.5" />
+                Copy prompt
+              </>
+            )}
+          </button>
         </div>
-        <ChevronDown className={cn("h-4 w-4 text-emerald-500 transition-transform", expanded && "rotate-180")} />
-      </button>
-      {expanded && (
-        <div className="px-4 pb-4">
-          <div className="relative">
-            <pre className="text-xs text-zinc-300 bg-zinc-900/80 rounded-lg p-4 overflow-x-auto max-h-96 overflow-y-auto whitespace-pre-wrap font-mono leading-relaxed border border-zinc-800">
-              {prompt}
-            </pre>
-            <button
-              onClick={handleCopy}
-              className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium transition-colors"
-            >
-              {copied ? (
-                <>
-                  <Check className="h-3.5 w-3.5" />
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <Copy className="h-3.5 w-3.5" />
-                  Copy Prompt
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-      )}
+      </div>
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            id={promptId}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden"
+          >
+            <div className="px-4 pb-4">
+              <pre className="max-h-[32rem] overflow-auto whitespace-pre-wrap rounded-lg border border-zinc-800 bg-zinc-950/80 p-4 font-mono text-xs leading-relaxed text-zinc-300">
+                {prompt}
+              </pre>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

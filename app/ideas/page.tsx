@@ -6,7 +6,7 @@ import { ideas } from "@/lib/ideas-data";
 
 export const metadata = {
   title: "58 Validated App Ideas Browser",
-  description: "Browse all 58 Astro-verified app ideas with filters, search, and detailed breakdowns.",
+  description: "Browse all 58 Astro-verified app ideas with filters, search, detailed breakdowns, and Codex-ready build prompts.",
 };
 
 export default function IdeasPage() {
