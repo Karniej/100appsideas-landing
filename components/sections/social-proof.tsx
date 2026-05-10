@@ -7,8 +7,8 @@ import { Check } from "lucide-react";
 const proofPoints = [
   "I have 8+ apps on the App Store — 6 from this list are already shipped (Fishify, ReWordly, VoxDub, DebatePro, PurrSense, Peptidly)",
   "Every keyword verified via live Astro MCP API — real pop/diff scores, not estimates",
-  "Re-validated 2026-05-03: every pop/diff score double-checked, statuses updated",
-  "250+ keywords checked across 118 app ideas — 48 survived validation",
+  "Re-validated 2026-05-10: every pop/diff score double-checked, statuses updated",
+  "250+ keywords checked across 118 app ideas — 58 survived validation",
   "26 dead ideas removed (primary keyword pop <= 5 with no viable alternative)",
   "Competition data from actual App Store search results — top 5 apps per keyword",
   "Ranked by pop/diff ratio — highest opportunity first, not random order",
@@ -70,7 +70,7 @@ const SocialProofSection = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800">
                 <div className="text-2xl font-heading font-bold text-emerald-400 mb-1">
-                  48
+                  58
                 </div>
                 <div className="text-zinc-400 text-xs">
                   Validated ideas in the database

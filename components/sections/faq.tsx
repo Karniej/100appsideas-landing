@@ -9,12 +9,12 @@ const faqs = [
   {
     question: "How do I access the ideas?",
     answer:
-      "After buying Ship React Native + Community, you'll get an access code in your welcome email. Enter it at 100appideas.com/ideas to browse all 48 validated ideas with filters, search, and full breakdowns — verified keyword data, competitor analysis, pricing, and template groups.",
+      "After buying Ship React Native + Community, you'll get an access code in your welcome email. Enter it at 100appideas.com/ideas to browse all 58 validated ideas with filters, search, and full breakdowns — verified keyword data, competitor analysis, pricing, and template groups.",
   },
   {
     question: "How were the ideas validated?",
     answer:
-      "Every keyword was verified via the live Astro MCP API — real-time App Store keyword data, not estimates. 250+ keywords checked across 118 app ideas. Competition data comes from actual App Store search results (top 5 apps per keyword). 26 dead ideas (pop <= 5) were removed entirely. 48 ideas survived. Re-validated 2026-05-03 with 9 newly DEAD, 3 marginal, and 7 improvers flagged in-place.",
+      "Every keyword was verified via the live Astro MCP API — real-time App Store keyword data, not estimates. 250+ keywords checked across 118 app ideas. Competition data comes from actual App Store search results (top 5 apps per keyword). 26 dead ideas (pop <= 5) were removed entirely. 58 ideas survived (10 added on 2026-05-04). Re-validated 2026-05-10 with 4 newly DEAD, 2 marginal, and 2 improvers flagged in-place.",
   },
   {
     question: "Have any of these ideas actually been built?",
@@ -29,12 +29,12 @@ const faqs = [
   {
     question: "Will someone else build these if I get access?",
     answer:
-      "Honestly? Probably. But the App Store is huge and most people who read research docs never ship anything. There are 48 ideas here — even if 10 people pick from this list, they'd each choose different ones. And execution matters way more than the idea.",
+      "Honestly? Probably. But the App Store is huge and most people who read research docs never ship anything. There are 58 ideas here — even if 10 people pick from this list, they'd each choose different ones. And execution matters way more than the idea.",
   },
   {
     question: "How current is the data?",
     answer:
-      "All keyword data was verified via Astro MCP API on April 6, 2026, then re-validated on May 3, 2026. Keyword data and competitor counts shift over time, but low-competition niches don't suddenly get crowded overnight. These gaps usually stay open for months.",
+      "All keyword data was verified via Astro MCP API on April 6, 2026, then re-validated on May 10, 2026 (with 10 fresh ideas merged on May 4). Keyword data and competitor counts shift over time, but low-competition niches don't suddenly get crowded overnight. These gaps usually stay open for months.",
   },
   {
     question: "Do I need to know how to code?",

@@ -5,8 +5,8 @@ import IdeasBrowser from "@/components/ideas/ideas-browser";
 import { ideas } from "@/lib/ideas-data";
 
 export const metadata = {
-  title: "48 Validated App Ideas Browser",
-  description: "Browse all 48 Astro-verified app ideas with filters, search, and detailed breakdowns.",
+  title: "58 Validated App Ideas Browser",
+  description: "Browse all 58 Astro-verified app ideas with filters, search, and detailed breakdowns.",
 };
 
 export default function IdeasPage() {
@@ -23,7 +23,7 @@ export default function IdeasPage() {
           </Link>
           <h1 className="font-heading text-lg font-bold">
             <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text">
-              48 Validated Ideas
+              58 Validated Ideas
             </span>
           </h1>
           <div className="w-16" />

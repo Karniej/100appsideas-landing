@@ -61,7 +61,7 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
             Enter Access Code
           </h2>
           <p className="text-sm text-zinc-400 mb-6">
-            Enter the code from your purchase to browse all 48 validated ideas.
+            Enter the code from your purchase to browse all 58 validated ideas.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
