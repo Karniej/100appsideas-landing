@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useMemo, useEffect, useRef } from "react";
+import { Fragment, useState, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -34,6 +34,7 @@ import {
 } from "@/lib/policy-data";
 
 type SortOption = "rank" | "popularity" | "difficulty" | "score" | "competition";
+type IdeaTier = "active" | "watchlist" | "shipped" | "dead";
 
 const STATUS_COLORS: Record<IdeaStatus, { border: string; bg: string; text: string; dot: string }> = {
   SHIPPED: { border: "border-l-emerald-500", bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-400" },
@@ -61,6 +62,36 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "difficulty", label: "Easiest to rank first" },
   { value: "competition", label: "Fewest competitors first" },
 ];
+
+const TIER_COPY: Record<IdeaTier, { label: string; description: string; className: string }> = {
+  active: {
+    label: "Build Candidates",
+    description: "Strong and moderate opportunities after intent, saturation, competition, and keyword-cluster scoring.",
+    className: "border-emerald-500/25 bg-emerald-500/5 text-emerald-300",
+  },
+  watchlist: {
+    label: "Borderline / Watchlist",
+    description: "Still tracked, but weak. These need extra distribution, a better keyword cluster, or a sharper wedge before building.",
+    className: "border-amber-500/25 bg-amber-500/5 text-amber-300",
+  },
+  shipped: {
+    label: "Already Shipped Proof",
+    description: "Built internally; useful as methodology proof or as an iteration brief, not a fresh idea.",
+    className: "border-blue-500/25 bg-blue-500/5 text-blue-300",
+  },
+  dead: {
+    label: "Rejected / Monitor-Only",
+    description: "Kept for research history. These should not be treated as build-now opportunities.",
+    className: "border-red-500/25 bg-red-500/5 text-red-300",
+  },
+};
+
+function getIdeaTier(idea: Idea): IdeaTier {
+  if (idea.status === "DEAD") return "dead";
+  if (idea.status === "SHIPPED") return "shipped";
+  if (idea.status === "WEAK") return "watchlist";
+  return "active";
+}
 
 interface IdeasBrowserProps {
   ideas: Idea[];
@@ -118,6 +149,16 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
   }, [ideas]);
 
   const policyCounts = useMemo(() => getPolicyCounts(ideas), [ideas]);
+
+  const tierCounts = useMemo(() => {
+    return ideas.reduce(
+      (counts, idea) => {
+        counts[getIdeaTier(idea)] += 1;
+        return counts;
+      },
+      { active: 0, watchlist: 0, shipped: 0, dead: 0 } as Record<IdeaTier, number>
+    );
+  }, [ideas]);
 
   const filtered = useMemo(() => {
     let result = [...ideas];
@@ -237,16 +278,16 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
           <div>
             <div className="inline-flex items-center gap-2 text-sm font-medium text-emerald-300">
               <Terminal className="h-4 w-4" />
-              Codex prompts for every idea
+              Research tiers are separated
             </div>
             <p className="mt-1 text-sm text-zinc-400">
-              Expand any idea to copy one complete build prompt with scope, stack, monetization, competition, and policy notes.
+              {tierCounts.active} build candidates, {tierCounts.watchlist} borderline watchlist ideas, {tierCounts.shipped} shipped proof, and {tierCounts.dead} rejected or monitor-only ideas.
             </p>
           </div>
           <div className="flex flex-wrap gap-2 text-xs font-medium text-emerald-300">
-            <span className="rounded-full border border-emerald-500/20 bg-zinc-950 px-3 py-1">Generated live</span>
-            <span className="rounded-full border border-emerald-500/20 bg-zinc-950 px-3 py-1">Policy-aware</span>
-            <span className="rounded-full border border-emerald-500/20 bg-zinc-950 px-3 py-1">Copy-ready</span>
+            <span className="rounded-full border border-emerald-500/20 bg-zinc-950 px-3 py-1">Build now</span>
+            <span className="rounded-full border border-amber-500/20 bg-zinc-950 px-3 py-1 text-amber-300">Watchlist</span>
+            <span className="rounded-full border border-red-500/20 bg-zinc-950 px-3 py-1 text-red-300">Monitor-only</span>
           </div>
         </div>
 
@@ -465,14 +506,31 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
       {/* Ideas list */}
       <div className="space-y-2">
         {filtered.map((idea, i) => {
+          const tier = getIdeaTier(idea);
+          const previousTier = i > 0 ? getIdeaTier(filtered[i - 1]) : null;
+          const showTierBreak = sortBy === "rank" && tier !== previousTier;
+          const tierCopy = TIER_COPY[tier];
           const isExpanded = expandedRank === idea.rank;
           const policyProfile = getPolicyProfile(idea);
           const buildPrompt = isExpanded
             ? idea.buildPrompt ?? generateCodexBuildPrompt(idea, policyProfile)
             : "";
           return (
+            <Fragment key={idea.rank}>
+              {showTierBreak && (
+                <div className={cn("mt-7 rounded-xl border px-4 py-3 first:mt-0", tierCopy.className)}>
+                  <div className="flex flex-col gap-1 md:flex-row md:items-end md:justify-between">
+                    <div>
+                      <div className="text-sm font-semibold">{tierCopy.label}</div>
+                      <p className="mt-0.5 text-xs leading-relaxed text-zinc-400">{tierCopy.description}</p>
+                    </div>
+                    <div className="text-xs font-medium text-zinc-500">
+                      {tierCounts[tier]} ideas
+                    </div>
+                  </div>
+                </div>
+              )}
             <motion.div
-              key={idea.rank}
               ref={isExpanded ? expandedRef : undefined}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -756,6 +814,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                 )}
               </AnimatePresence>
             </motion.div>
+            </Fragment>
           );
         })}
 
