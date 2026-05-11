@@ -68,4 +68,5 @@ Ranking rule:
 - Active unbuilt ideas rank first.
 - Already shipped ideas rank after active opportunities.
 - Dead ideas rank last.
-- Within each bucket, ideas sort by `totalScore`, then higher popularity, then lower difficulty.
+- Within each bucket, ideas sort by the stricter `totalScore`, then higher ranking-keyword popularity, then lower difficulty.
+- `totalScore` now penalizes saturated broad head terms using Astro `appsCount`, keyword intent quality, and weak keyword-cluster depth. A broad term with one qualified keyword should not outrank an exact app-intent keyword just because its pop/diff ratio is attractive.

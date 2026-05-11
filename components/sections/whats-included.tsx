@@ -53,15 +53,15 @@ const items = [
   },
   {
     icon: Clock,
-    title: "Competition Assessment",
+    title: "Opportunity Assessment",
     description:
-      "Each idea classified by competition strength and launch status: WEAK, MODERATE, STRONG, DEAD, or SHIPPED.",
+      "Each idea classified by stricter opportunity signal and launch status: WEAK, MODERATE, STRONG, DEAD, or SHIPPED.",
   },
   {
     icon: ListOrdered,
     title: "Ranked by Opportunity Score",
     description:
-      "Sorted by active opportunity first, using total score, popularity, and lower difficulty as tie-breakers. Matcha Finder leads with score 92.",
+      "Sorted by active opportunity first, now penalizing saturated broad keywords with weak search intent. Amino Acid Quiz Trainer leads with score 60.",
   },
   {
     icon: ShieldCheck,

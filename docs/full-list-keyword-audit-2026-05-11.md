@@ -70,3 +70,11 @@ Rejected MAKESENSE? keywords:
 Rule after audit:
 
 If an idea is active, at least one primary or target keyword in the consolidated Astro app must currently qualify under the cutoff. If not, it moves to `DEAD` even if the app concept still sounds plausible.
+
+Ranking update:
+
+- Ranking now uses a stricter score than the original pop/diff ratio.
+- Each idea has a ranking keyword, Astro `appsCount`, qualified keyword count, and intent score.
+- Exact app-intent keywords such as `amino acid quiz`, `psat score`, `chess clock`, and `check writer` are rewarded.
+- Broad head terms such as `matcha`, `harmonica`, `haiku`, and `latin` are penalized when the supporting long-tail cluster is weak.
+- `Matcha Finder` dropped from #1 to #16 because `matcha` has pop 63 / diff 9 but 232 App Store apps, only one qualifying tracked keyword, and broad/fuzzy search intent.

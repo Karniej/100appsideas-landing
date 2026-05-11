@@ -14,9 +14,9 @@ const BUILD_TIME_COPY: Record<Idea["buildTime"], string> = {
 
 const STATUS_COPY: Record<Idea["status"], string> = {
   SHIPPED: "Already shipped internally; use this as a polish or iteration brief.",
-  WEAK: "Weak competition; move quickly and prioritize App Store positioning.",
-  MODERATE: "Beatable competition; ship a focused product with a clear wedge.",
-  STRONG: "Strong competition; the MVP needs a sharper differentiator and higher execution quality.",
+  WEAK: "Weak opportunity signal; only build with a narrow ASO wedge or extra distribution.",
+  MODERATE: "Moderate opportunity signal; ship a focused product with clear keyword alignment.",
+  STRONG: "Strong opportunity signal; prioritize exact search intent and fast launch quality.",
   DEAD: "Low search volume; treat this as a cautious experiment unless there is another distribution channel.",
 };
 
@@ -82,8 +82,12 @@ ${idea.concept}
 
 Opportunity signal:
 - Dataset rank: #${idea.rank}
+- Ranking keyword: ${idea.rankingKeyword}
 - Popularity score: ${idea.pop}
 - Keyword difficulty: ${idea.diff}
+- App Store apps on ranking keyword: ${idea.appsCount}
+- Qualified tracked keywords: ${idea.qualifiedKeywordCount}
+- Search intent score: ${idea.intentScore}/100
 - Keyword score: ${idea.kwScore}
 - Competition review count: ${idea.compReviews.toLocaleString()}
 - Competition score: ${idea.compScore}

@@ -70,7 +70,7 @@ const HeroSection = () => {
             Every keyword verified via live{" "}
             <a href="https://tryastro.app" target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:text-amber-300 underline underline-offset-2">Astro</a>
             {" "}MCP API. 265 qualified keywords screened, then 486 list keywords audited in one Astro app. 47 ideas remain active after stale data was demoted.
-            Real pop/diff scores, real competitors, real review counts &mdash; not vibes. Last validated 2026-05-11.
+            Real pop/diff, app count saturation, search intent, competitors, and review counts &mdash; not vibes. Last validated 2026-05-11.
           </motion.p>
 
           <motion.div

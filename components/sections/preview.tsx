@@ -25,28 +25,50 @@ type PreviewIdea = {
 const previewIdeas: PreviewIdea[] = [
   {
     rank: 1,
-    name: "Matcha Finder",
-    pop: 63,
-    diff: 9,
-    competitor: "Matcha Map - For Matcha Lovers",
-    competitorReviews: "7",
-    competitorRating: "4.4",
-    category: "Food & Drink",
+    name: "Amino Acid Quiz Trainer",
+    pop: 54,
+    diff: 15,
+    competitor: "Amino Acid Quiz",
+    competitorReviews: "920",
+    competitorRating: "4.9",
+    category: "Education",
     status: "STRONG",
   },
   {
     rank: 2,
-    name: "Armocromia Color Analysis",
-    pop: 42,
-    diff: 23,
-    competitor: "Color Analysis - Dressika",
-    competitorReviews: "4,213",
-    competitorRating: "4.4",
-    category: "Lifestyle",
+    name: "PSAT Score Calculator",
+    pop: 52,
+    diff: 38,
+    competitor: "PSAT Score Calculator",
+    competitorReviews: "0",
+    competitorRating: "-",
+    category: "Education",
     status: "STRONG",
   },
   {
     rank: 3,
+    name: "Chess Clock",
+    pop: 48,
+    diff: 17,
+    competitor: "Chess Clock by Chess.com",
+    competitorReviews: "334",
+    competitorRating: "4.6",
+    category: "Board",
+    status: "STRONG",
+  },
+  {
+    rank: 4,
+    name: "Check Writer",
+    pop: 34,
+    diff: 9,
+    competitor: "Check Writer: Print Checks",
+    competitorReviews: "304",
+    competitorRating: "4.2",
+    category: "Finance",
+    status: "STRONG",
+  },
+  {
+    rank: 5,
     name: "ID Scanner Pro",
     pop: 53,
     diff: 15,
@@ -54,28 +76,6 @@ const previewIdeas: PreviewIdea[] = [
     competitorReviews: "3,024",
     competitorRating: "4.6",
     category: "Business",
-    status: "STRONG",
-  },
-  {
-    rank: 4,
-    name: "Harmonica Trainer",
-    pop: 54,
-    diff: 13,
-    competitor: "Harmonica Real Pro",
-    competitorReviews: "2,600",
-    competitorRating: "4.8",
-    category: "Music",
-    status: "STRONG",
-  },
-  {
-    rank: 5,
-    name: "Social Security Calculator",
-    pop: 59,
-    diff: 41,
-    competitor: "Social Security Optimizer:Boss",
-    competitorReviews: "1,442",
-    competitorRating: "4.2",
-    category: "Finance",
     status: "STRONG",
   },
   {
@@ -155,7 +155,7 @@ const PreviewSection = () => {
             </span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            These are the top 5 by normalized opportunity score. All 76 validated ideas have write-ups,
+            These are the top 5 by stricter opportunity score. All 76 validated ideas have write-ups,
             real Astro keyword data, competitor analysis, and pricing.
           </p>
         </motion.div>
@@ -321,51 +321,51 @@ const PreviewSection = () => {
         >
           <div className="flex items-center gap-3 mb-6">
             <span className="px-2.5 py-1 rounded text-xs font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20">
-              #1 Ranked &mdash; Score 92
+              #1 Ranked &mdash; Score 60
             </span>
             <span className="px-2.5 py-1 rounded text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
-              WEAK COMPETITION
+              EXACT APP INTENT
             </span>
           </div>
           <h3 className="font-heading text-2xl font-bold mb-2">
-            Matcha Finder
+            Amino Acid Quiz Trainer
           </h3>
           <p className="text-zinc-400 mb-6">
-            Find nearby matcha cafes, rate matcha drinks, track your matcha
-            journey with tasting notes. Target the booming matcha culture among
-            health-conscious millennials and Gen Z.
+            Fast amino acid memorization for biology, biochem, MCAT, nursing,
+            and pre-med students. Drill structures, codes, polarity, charge,
+            and essential amino acids with spaced repetition.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">Popularity</div>
-              <div className="text-lg font-semibold">63</div>
+              <div className="text-lg font-semibold">54</div>
             </div>
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">Difficulty</div>
-              <div className="text-lg font-semibold text-emerald-400">9</div>
+              <div className="text-lg font-semibold text-emerald-400">15</div>
             </div>
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">
                 Top Competitor Reviews
               </div>
-              <div className="text-lg font-semibold text-emerald-400">7</div>
+              <div className="text-lg font-semibold text-amber-400">920</div>
             </div>
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">Build Time</div>
-              <div className="text-lg font-semibold">2 Weeks</div>
+              <div className="text-lg font-semibold">Weekend</div>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-2 mb-6">
             {[
-              "matcha",
-              "matcha map",
-              "matcha cafe",
-              "matcha tea",
-              "green tea",
-              "latte finder",
-              "tea shop",
+              "amino acid quiz",
+              "amino acids",
+              "biochemistry",
+              "mcat",
+              "biology quiz",
+              "flashcards",
+              "organic chemistry",
             ].map((kw) => (
               <span
                 key={kw}

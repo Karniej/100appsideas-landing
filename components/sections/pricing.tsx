@@ -25,7 +25,7 @@ const features = [
   { icon: Target, text: "5-8 target keywords per app" },
   { icon: Layers, text: "Template groups — build one, clone the next" },
   { icon: Clock, text: "Build time: weekend / week / complex" },
-  { icon: ListOrdered, text: "All 76 ranked by normalized opportunity score" },
+  { icon: ListOrdered, text: "All 76 ranked by stricter intent and saturation-aware score" },
   {
     icon: Check,
     text: "Competition rated: WEAK / MODERATE / STRONG",

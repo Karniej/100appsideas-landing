@@ -45,7 +45,7 @@ const STATUS_COLORS: Record<IdeaStatus, { border: string; bg: string; text: stri
 
 const BUILD_LABELS: Record<BuildTime, string> = { weekend: "< 2 days", week: "3-7 days", complex: "1-2 weeks", ai: "2+ weeks (AI)" };
 const BUILD_COLORS: Record<BuildTime, string> = { weekend: "text-emerald-400", week: "text-amber-400", complex: "text-orange-400", ai: "text-violet-400" };
-const STATUS_LABELS: Record<IdeaStatus, string> = { SHIPPED: "Already shipped", WEAK: "Easy to beat", MODERATE: "Beatable", STRONG: "Strong competition", DEAD: "No search volume" };
+const STATUS_LABELS: Record<IdeaStatus, string> = { SHIPPED: "Already shipped", WEAK: "Weak signal", MODERATE: "Moderate signal", STRONG: "Strong signal", DEAD: "No search volume" };
 const PRICING_LABELS: Record<string, string> = { entry: "Entry", standard: "Standard", premium: "Premium" };
 const POLICY_RISK_LABELS: Record<PolicyRisk, string> = { low: "Low policy risk", review: "Needs review", high: "High policy risk" };
 const POLICY_RISK_STYLES: Record<PolicyRisk, string> = {
@@ -184,7 +184,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
             <div className="text-2xl md:text-3xl font-heading font-bold text-emerald-400">
               {statusCounts["WEAK"] || 0}
             </div>
-            <div className="text-xs text-zinc-500 mt-0.5">Weak Competition</div>
+            <div className="text-xs text-zinc-500 mt-0.5">Weak Signal</div>
           </div>
         </div>
         <div className="p-4 rounded-xl bg-zinc-900/50 border border-amber-500/20">
@@ -287,12 +287,12 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
 
         {/* Filter row */}
         <div className="flex flex-wrap items-center gap-2">
-          {/* Competition level pills */}
+          {/* Opportunity signal pills */}
           {([
             { key: "ALL", label: "All", desc: null },
-            { key: "WEAK", label: "Weak", desc: "Top app has < 500 reviews or < 4.0 rating" },
-            { key: "MODERATE", label: "Moderate", desc: "Established but beatable" },
-            { key: "STRONG", label: "Strong", desc: "Well-served niche, needs strong differentiator" },
+            { key: "WEAK", label: "Weak", desc: "Qualifies, but has low score, weak cluster, or saturation risk" },
+            { key: "MODERATE", label: "Moderate", desc: "Survives the stricter ranking score" },
+            { key: "STRONG", label: "Strong", desc: "Best active opportunity signals" },
           ] as const).map((s) => (
             <button
               key={s.key}
@@ -526,6 +526,10 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                       <div className="text-sm font-semibold text-zinc-300">{idea.diff}</div>
                     </div>
                     <div className="text-center w-12">
+                      <div className="text-xs text-zinc-600 mb-0.5">Apps</div>
+                      <div className="text-sm font-semibold text-zinc-300">{idea.appsCount}</div>
+                    </div>
+                    <div className="text-center w-12">
                       <div className="text-xs text-zinc-600 mb-0.5">Score</div>
                       <div className="text-sm font-bold text-amber-400">+{idea.totalScore}</div>
                     </div>
@@ -606,17 +610,18 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                       </div>
 
                       {/* Score cards */}
-                      <div className="grid grid-cols-5 gap-2">
+                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
                         {[
                           { label: "Pop", value: idea.pop, color: "text-white" },
                           { label: "Diff", value: idea.diff, color: idea.diff <= 20 ? "text-emerald-400" : idea.diff <= 30 ? "text-amber-400" : "text-red-400" },
-                          { label: "KW Score", value: idea.kwScore, color: "text-white" },
-                          { label: "Comp Score", value: idea.compScore, color: "text-white" },
-                          { label: "Total", value: idea.totalScore, color: "text-amber-400" },
+                          { label: "Apps", value: idea.appsCount, color: idea.appsCount <= 180 ? "text-emerald-400" : idea.appsCount <= 225 ? "text-amber-400" : "text-red-400" },
+                          { label: "Intent", value: idea.intentScore, color: idea.intentScore >= 90 ? "text-emerald-400" : idea.intentScore >= 70 ? "text-amber-400" : "text-red-400" },
+                          { label: "KW Score", value: idea.kwScore, color: "text-white", signed: true },
+                          { label: "Total", value: idea.totalScore, color: "text-amber-400", signed: true },
                         ].map((stat) => (
                           <div key={stat.label} className="text-center p-3 rounded-lg bg-zinc-800/50 border border-zinc-800">
                             <div className={cn("text-lg font-bold font-heading", stat.color)}>
-                              {stat.value > 0 ? `+${stat.value}` : stat.value}
+                              {stat.signed && stat.value > 0 ? `+${stat.value}` : stat.value}
                             </div>
                             <div className="text-[10px] text-zinc-500 mt-0.5">{stat.label}</div>
                           </div>
@@ -726,6 +731,10 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                           <div className="space-y-2.5">
                             {[
                               { label: "Group", value: idea.group },
+                              { label: "Ranking KW", value: idea.rankingKeyword },
+                              { label: "Apps Count", value: idea.appsCount.toLocaleString() },
+                              { label: "Qualified KWs", value: idea.qualifiedKeywordCount.toString() },
+                              { label: "Intent", value: `${idea.intentScore}/100` },
                               { label: "KW Score", value: `+${idea.kwScore}` },
                               { label: "Comp Score", value: `+${idea.compScore}` },
                               { label: "Comp Reviews", value: idea.compReviews.toLocaleString() },

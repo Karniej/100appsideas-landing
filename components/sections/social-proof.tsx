@@ -11,7 +11,7 @@ const proofPoints = [
   "265 qualified Astro keywords reviewed — 76 documented, 47 still active after audit",
   "Vague, brand-specific, and proprietary-companion keywords removed before merging",
   "Competition data from actual App Store search results — top 5 apps per keyword",
-  "Ranked by normalized opportunity score — active ideas first, then shipped and dead ideas",
+  "Ranked by stricter opportunity score — intent, app count saturation, competition, then shipped/dead status",
   "Template groups so you can build one app and rapidly clone the next 5",
 ];
 
