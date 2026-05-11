@@ -59,9 +59,9 @@ const items = [
   },
   {
     icon: ListOrdered,
-    title: "Ranked by Pop/Diff Ratio",
+    title: "Ranked by Opportunity Score",
     description:
-      "Sorted by opportunity — highest pop/diff ratio first. Matcha Finder leads at 7.00 (pop 63, diff 9).",
+      "Sorted by active opportunity first, using total score, popularity, and lower difficulty as tie-breakers. Matcha Finder leads with score 92.",
   },
   {
     icon: ShieldCheck,

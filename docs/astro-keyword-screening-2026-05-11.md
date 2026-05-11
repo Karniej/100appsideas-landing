@@ -1,6 +1,6 @@
 # Astro Keyword Screening - 2026-05-11
 
-Source: local Astro keyword/opportunity database in `data/keywords.db`, cross-checked with App Store search results and the ASC app list.
+Source: Astro MCP temporary app `Best Keywords All 68 Apps` (`appId` 110), the local opportunity cache in `data/keywords.db`, App Store search results, and the ASC app list.
 
 Filter used:
 
@@ -10,8 +10,8 @@ Filter used:
 
 Screening result:
 
-- 8,691 total keywords in the local database
-- 1,364 keywords matched the pop/diff filter
+- 5,247 tracked keywords in the Astro temporary app
+- 161 keywords matched the pop/diff filter
 - 68 ideas are now listed on the landing site
 - 10 ideas were added in this pass
 - 1 vague/brand-intent idea was replaced
@@ -45,3 +45,10 @@ Rejected high-metric keyword patterns:
 Selection rule:
 
 Good metrics were not enough. The keyword needed a clear job-to-be-done, a plausible independent app, and an ASO angle that does not depend on impersonating a brand or building an unofficial client for someone else's platform.
+
+Ranking rule:
+
+- Active unbuilt ideas rank first.
+- Already shipped ideas rank after active opportunities.
+- Dead ideas rank last.
+- Within each bucket, ideas sort by `totalScore`, then higher popularity, then lower difficulty.

@@ -32,50 +32,50 @@ const previewIdeas: PreviewIdea[] = [
     competitorReviews: "7",
     competitorRating: "4.4",
     category: "Food & Drink",
-    status: "WEAK",
+    status: "STRONG",
   },
   {
     rank: 2,
-    name: "Check Writer",
-    pop: 34,
-    diff: 9,
-    competitor: "Check Writer: Print Checks",
-    competitorReviews: "304",
-    competitorRating: "4.2",
-    category: "Finance",
+    name: "Armocromia Color Analysis",
+    pop: 42,
+    diff: 23,
+    competitor: "Color Analysis - Dressika",
+    competitorReviews: "4,213",
+    competitorRating: "4.4",
+    category: "Lifestyle",
     status: "STRONG",
   },
   {
     rank: 3,
-    name: "Token Board",
-    pop: 25,
-    diff: 9,
-    competitor: "Token Board GO",
-    competitorReviews: "2,114",
+    name: "ID Scanner Pro",
+    pop: 53,
+    diff: 15,
+    competitor: "ID Scanner Professional",
+    competitorReviews: "3,024",
     competitorRating: "4.6",
-    category: "Education",
-    status: "MODERATE",
+    category: "Business",
+    status: "STRONG",
   },
   {
     rank: 4,
-    name: "Chess Clock",
-    pop: 47,
-    diff: 17,
-    competitor: "Chess Clock by Chess.com",
-    competitorReviews: "334",
-    competitorRating: "4.6",
-    category: "Board",
-    status: "MODERATE",
+    name: "Harmonica Trainer",
+    pop: 54,
+    diff: 13,
+    competitor: "Harmonica Real Pro",
+    competitorReviews: "2,600",
+    competitorRating: "4.8",
+    category: "Music",
+    status: "STRONG",
   },
   {
     rank: 5,
-    name: "Heat Index Calculator",
-    pop: 30,
-    diff: 11,
-    competitor: "Heat Safety",
-    competitorReviews: "1,600",
-    competitorRating: "4.6",
-    category: "Weather",
+    name: "Social Security Calculator",
+    pop: 59,
+    diff: 41,
+    competitor: "Social Security Optimizer:Boss",
+    competitorReviews: "1,442",
+    competitorRating: "4.2",
+    category: "Finance",
     status: "STRONG",
   },
   {
@@ -155,7 +155,7 @@ const PreviewSection = () => {
             </span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            These are the top 5 by pop/diff ratio. All 68 validated ideas have write-ups,
+            These are the top 5 by normalized opportunity score. All 68 validated ideas have write-ups,
             real Astro keyword data, competitor analysis, and pricing.
           </p>
         </motion.div>
@@ -321,7 +321,7 @@ const PreviewSection = () => {
         >
           <div className="flex items-center gap-3 mb-6">
             <span className="px-2.5 py-1 rounded text-xs font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20">
-              #1 Ranked &mdash; Ratio 7.00
+              #1 Ranked &mdash; Score 92
             </span>
             <span className="px-2.5 py-1 rounded text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
               WEAK COMPETITION

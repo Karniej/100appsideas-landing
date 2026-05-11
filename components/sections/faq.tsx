@@ -14,7 +14,7 @@ const faqs = [
   {
     question: "How were the ideas validated?",
     answer:
-      "Every keyword was verified via the live Astro MCP API — real-time App Store keyword data, not estimates. The latest pass screened 1,364 keywords with popularity 20+ and difficulty 45 or lower. Competition data comes from actual App Store search results (top 5 apps per keyword). Vague, brand-specific, and proprietary companion-app keywords were removed before merging. 68 ideas survived after the 2026-05-11 refresh.",
+      "Every keyword was verified via the live Astro MCP API — real-time App Store keyword data, not estimates. The latest pass screened 161 keywords with popularity 20+ and difficulty 45 or lower. Competition data comes from actual App Store search results (top 5 apps per keyword). Vague, brand-specific, and proprietary companion-app keywords were removed before merging. 68 ideas survived after the 2026-05-11 refresh.",
   },
   {
     question: "Have any of these ideas actually been built?",

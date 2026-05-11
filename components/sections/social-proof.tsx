@@ -8,10 +8,10 @@ const proofPoints = [
   "I have 8+ apps on the App Store — 6 from this list are already shipped (Fishify, ReWordly, VoxDub, DebatePro, PurrSense, Peptidly)",
   "Every keyword verified via live Astro MCP API — real pop/diff scores, not estimates",
   "Re-validated 2026-05-11: pop 20+ / diff 45 or lower keywords screened again",
-  "1,364 qualified Astro keywords reviewed — 68 survived as app ideas",
+  "161 qualified Astro keywords reviewed — 68 survived as app ideas",
   "Vague, brand-specific, and proprietary-companion keywords removed before merging",
   "Competition data from actual App Store search results — top 5 apps per keyword",
-  "Ranked by pop/diff ratio — highest opportunity first, not random order",
+  "Ranked by normalized opportunity score — active ideas first, then shipped and dead ideas",
   "Template groups so you can build one app and rapidly clone the next 5",
 ];
 
@@ -61,7 +61,7 @@ const SocialProofSection = () => {
           >
             <div className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800">
               <div className="text-4xl font-heading font-bold bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text mb-2">
-                1,364
+                161
               </div>
               <div className="text-zinc-400 text-sm">
                 Qualified keywords screened from Astro
