@@ -241,6 +241,7 @@ const REVIEW_RISK_SLUGS = new Set([
   "potty-training-app",
   "trading-journal",
   "check-writer",
+  "social-security-calculator",
   "hymn-book",
   "font-identifier",
   "ai-jewelry-identifier",
@@ -432,6 +433,17 @@ const POLICY_OVERRIDES: Record<string, PolicyOverride> = {
       "Avoid implying bank endorsement or guaranteed check acceptance.",
       "Treat routing numbers, account numbers, and payee details as sensitive records.",
       "Keep the product positioned as formatting and recordkeeping support.",
+    ],
+  },
+  "social-security-calculator": {
+    tags: ["REGULATED_FIN_ID", "SENSITIVE_DATA", "AI_SYNTHETIC", "PAYMENTS_SUBS"],
+    risk: "review",
+    summary: "Needs a policy pass for retirement-benefit planning, sensitive financial inputs, and government-adjacent positioning.",
+    notes: [
+      "State clearly that the app is independent and not affiliated with the SSA or any government agency.",
+      "Frame outputs as estimates and planning scenarios, not financial, tax, legal, or benefits advice.",
+      "Treat SSA estimates, spouse details, and retirement assumptions as sensitive financial data.",
+      "Avoid certainty claims around benefit eligibility, tax treatment, COLA, or lifetime payout optimization.",
     ],
   },
   "potty-training-app": {

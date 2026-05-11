@@ -62,7 +62,33 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 63 with diff 9 = ratio 7.00 (BEST in entire dataset). Top dedicated app has only 7 reviews. #3 result is a crypto app ranking accidentally. The matcha culture is booming and completely underserved on mobile.",
   },
   {
-    rank: 33,
+    rank: 4,
+    name: "Social Security Calculator",
+    slug: "social-security-calculator",
+    category: "Finance",
+    group: "Retirement",
+    pop: 59, diff: 41, kwScore: 18, compReviews: 1442, compScore: 15, totalScore: 78,
+    status: "STRONG",
+    buildTime: "week",
+    pricingTier: "premium",
+    pricing: { weekly: "$7.99", monthly: "$14.99", annual: "$49.99", trial: "7-day" },
+    primaryKeyword: "social security app",
+    concept: "A modern Social Security claiming-age calculator for people near retirement. Users enter SSA.gov estimates, birth year, spouse details, work income, and target retirement age, then compare claiming scenarios with break-even charts and plain-English explanations. Position clearly as independent planning software, not an official SSA app.",
+    targetKeywords: ["social security app", "social security", "ssa gov", "ssa.gov", "my social security", "social security administration", "retirement calculator", "social security calculator", "social security optimizer", "social security benefits", "ssi benefits", "pension"],
+    competitors: [
+      { name: "Social Security Optimizer:Boss", reviews: "1,442", rating: "4.2" },
+      { name: "SSI Benefits 2026", reviews: "486", rating: "4.5" },
+      { name: "SSA Mobile Wage Reporting", reviews: "172", rating: "2.0" },
+      { name: "SSA SSN & SSI Guide Info", reviews: "112", rating: "4.7" },
+      { name: "Social Security Calculator App", reviews: "3", rating: "5.0" },
+    ],
+    features: ["Claiming-age comparison from 62 to 70", "SSA.gov estimate input with spouse and survivor scenarios", "Break-even timeline and lifetime benefit charts", "Work income, tax, Medicare, and COLA assumptions", "AI plain-English explanation of each scenario", "PDF retirement benefit report to save or share"],
+    implementation: ["SwiftUI", "SwiftData for saved scenarios", "Charts for break-even timelines", "PDFKit export", "Optional AI explanation layer with on-device cache"],
+    monetization: "Freemium — one basic calculation free, premium for spouse/survivor scenarios, tax and Medicare assumptions, AI explanations, and PDF reports. $7.99/week or $49.99/year.",
+    whyBuild: "Astro shows strong high-intent demand: social security app pop 59 / diff 41, ssa.gov pop 57 / diff 21, and social security pop 30 / diff 23. The main direct incumbent has 1,442 reviews and dated UX, while several calculator competitors have single-digit reviews. The play is a focused retirement-claiming calculator with careful non-affiliation positioning, not generic AI branding.",
+  },
+  {
+    rank: 34,
     name: "Mini Golf Scorecard",
     slug: "mini-golf-scorecard",
     category: "Sports",
@@ -87,7 +113,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 44 with diff 9 = ratio 4.89. #1 has 3,225 reviews BUT diff is only 9 which means ranking is achievable. Many small competitors prove the market. Apple Watch companion is the killer differentiator.",
   },
   {
-    rank: 5,
+    rank: 6,
     name: "ID Scanner Pro",
     slug: "id-scanner-pro",
     category: "Business",
@@ -112,7 +138,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 53 with diff 15 = ratio 3.53. Crowded B2B market but diff 15 means ranking is very achievable. Top apps target bars/clubs — room for a general-purpose personal scanner. Simpler and cheaper than B2B competitors.",
   },
   {
-    rank: 50,
+    rank: 51,
     name: "Deep Conversation Cards",
     slug: "deep-conversation-cards",
     category: "Entertainment",
@@ -138,7 +164,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 44 with diff 13 = ratio 3.38. HH Talk dominates but many small apps coexist. Content app = easy to differentiate with better card packs. Merges 'deep conversations' + 'conversation starters' keywords.",
   },
   {
-    rank: 19,
+    rank: 20,
     name: "Hymn Book",
     slug: "hymn-book",
     category: "Books",
@@ -163,7 +189,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 27 with diff 9 = ratio 3.00. Diff 9 is incredibly low. Top dedicated apps are small. The largest (143 reviews) has only 4.2 rating. Easy win with loyal, paying religious audience.",
   },
   {
-    rank: 7,
+    rank: 8,
     name: "Chess Clock",
     slug: "chess-clock",
     category: "Board",
@@ -187,7 +213,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 47 with diff 17 = ratio 2.76. Chess.com has brand advantage but only 334 reviews on their clock app. Diff 17 is very achievable. Apple Watch companion is the differentiator.",
   },
   {
-    rank: 9,
+    rank: 10,
     name: "Token Board",
     slug: "token-board",
     category: "Education",
@@ -212,7 +238,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 24 with diff 9 = ratio 2.67. Token Board GO dominates with 2,114 reviews BUT diff 9 means ranking is very easy. ABA therapy parents are high-paying and loyal users.",
   },
   {
-    rank: 16,
+    rank: 17,
     name: "Bowling Scorekeeper",
     slug: "bowling-scorekeeper",
     category: "Sports",
@@ -238,7 +264,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 48 with diff 19 = ratio 2.53. Several competitors but most have mediocre ratings. Bowling is evergreen. Diff 19 with pop 48 is a great ratio.",
   },
   {
-    rank: 14,
+    rank: 15,
     name: "Haiku Writer",
     slug: "haiku-writer",
     category: "Entertainment",
@@ -262,7 +288,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 52 with diff 21 = ratio 2.48. Top dedicated app has 2.5 rating (TERRIBLE). #4 is retired. Only 1 real competitor at 55 reviews. Wide open market.",
   },
   {
-    rank: 24,
+    rank: 25,
     name: "PSAT Score Calculator",
     slug: "psat-score-calculator",
     category: "Education",
@@ -286,7 +312,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 52 with diff 21 = ratio 2.48. Nobody has built a good PSAT score calculator. Prep apps exist but not score conversion tools. 3.7 million students take the PSAT every October. Massive seasonal spike.",
   },
   {
-    rank: 10,
+    rank: 11,
     name: "Peptide Calculator",
     slug: "peptide-calculator",
     category: "Health & Fitness",
@@ -312,7 +338,7 @@ export const ideas: Idea[] = [
     mergeNote: "SHIPPED as Peptidly (com.silpho.peptidly) by Silpho LLC."
   },
   {
-    rank: 13,
+    rank: 14,
     name: "Deck of Cards",
     slug: "deck-of-cards",
     category: "Entertainment",
@@ -336,7 +362,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 32 with diff 13 = ratio 2.46. Simple concept with clear demand. Weekend build with high upside.",
   },
   {
-    rank: 47,
+    rank: 48,
     name: "Pill Counter AI",
     slug: "pill-counter-ai",
     category: "Medical",
@@ -360,7 +386,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 36 with diff 15 = ratio 2.40. Leader has 2.9 rating (opportunity!). B2B pharmacy market pays well. Merges pill counter + pill identifier for double keyword coverage.",
   },
   {
-    rank: 4,
+    rank: 5,
     name: "Check Writer",
     slug: "check-writer",
     category: "Finance",
@@ -385,7 +411,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 26 with diff 11 = ratio 2.36. Top app has only 304 reviews at 4.2. Users clearly willing to pay for check writing tools.",
   },
   {
-    rank: 52,
+    rank: 53,
     name: "Bingo Caller",
     slug: "bingo-caller",
     category: "Entertainment",
@@ -410,7 +436,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 35 with diff 15 = ratio 2.33. Top caller has only 70 reviews at 4.2 rating. #2 and #3 have bad ratings. Clear opportunity for a polished caller app.",
   },
   {
-    rank: 12,
+    rank: 13,
     name: "Game Sheet",
     slug: "game-sheet",
     category: "Sports",
@@ -435,7 +461,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 25 with diff 11 = ratio 2.27. No app has more than 11 reviews. Wide open niche for a universal game scoring app.",
   },
   {
-    rank: 54,
+    rank: 55,
     name: "Floating Apps",
     slug: "floating-apps",
     category: "Productivity",
@@ -459,7 +485,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 43 with diff 19 = ratio 2.26. Top app has 846 reviews. iOS limits what's possible but PiP-based floating works. High pop keyword.",
   },
   {
-    rank: 51,
+    rank: 52,
     name: "Shot Timer",
     slug: "shot-timer",
     category: "Sports",
@@ -484,7 +510,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 29 with diff 13 = ratio 2.23. Firearms community always wants alternatives. #4 has terrible rating (2.0). Firearms users pay premium prices.",
   },
   {
-    rank: 17,
+    rank: 18,
     name: "Hunting Calls",
     slug: "hunting-calls",
     category: "Sports",
@@ -509,7 +535,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 23 with diff 11 = ratio 2.09. One developer owns this niche with separate per-species apps. A unified hunting calls app could win. Diff 11 is very low.",
   },
   {
-    rank: 48,
+    rank: 49,
     name: "Watch Me Grow",
     slug: "watch-me-grow",
     category: "Lifestyle",
@@ -531,7 +557,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 34 with diff 17 = ratio 2.00. The one dedicated app has a 2.1 rating with only 71 reviews. Massive opportunity — terrible incumbent.",
   },
   {
-    rank: 20,
+    rank: 21,
     name: "Animal Scat Identifier",
     slug: "animal-scat-identifier",
     category: "Education",
@@ -555,7 +581,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 25 with diff 13 = ratio 1.92. #2 has 413 reviews at 3.9 rating. Diff 13 is very low. Quirky niche with passionate outdoor enthusiasts.",
   },
   {
-    rank: 18,
+    rank: 19,
     name: "Birthday Candles",
     slug: "birthday-candles",
     category: "Entertainment",
@@ -579,7 +605,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 27 with diff 15 = ratio 1.80. Only e-Candle (9 reviews) specifically targets this keyword. Simple weekend build with clear seasonal demand.",
   },
   {
-    rank: 15,
+    rank: 16,
     name: "QSR Inventory Counter",
     slug: "qsr-inventory-counter",
     category: "Business",
@@ -603,7 +629,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 27 with diff 15 = ratio 1.80. Existing apps are enterprise-tied. Room for an indie restaurant inventory counter that works standalone.",
   },
   {
-    rank: 6,
+    rank: 7,
     name: "Trombone Trainer",
     slug: "trombone-trainer",
     category: "Music",
@@ -627,7 +653,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 26 with diff 15 = ratio 1.73. Top app has only 3 reviews. Entire niche is underserved. Music instrument apps have loyal, paying users.",
   },
   {
-    rank: 8,
+    rank: 9,
     name: "Heat Index Calculator",
     slug: "heat-index-calculator",
     category: "Weather",
@@ -651,7 +677,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 28 with diff 17 = ratio 1.65. OSHA app has terrible 2.5 rating. Heat Safety has 1,600 reviews but room for a simpler, faster tool. Climate change driving demand.",
   },
   {
-    rank: 55,
+    rank: 56,
     name: "Coin Flip",
     slug: "coin-flip",
     category: "Utilities",
@@ -699,7 +725,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 24 with diff 15 = ratio 1.60. All competitors have fewer than 50 reviews. Diff 15 is very achievable.",
   },
   {
-    rank: 23,
+    rank: 24,
     name: "Foraging Guide",
     slug: "foraging-guide",
     category: "Education",
@@ -721,7 +747,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 31 with diff 21 = ratio 1.48. Top results are VIDEO GAMES called 'Forager'. The actual foraging guide space has only 1 competitor at 50 reviews. Incredible hidden opportunity.",
   },
   {
-    rank: 21,
+    rank: 22,
     name: "First Aid & CPR Guide",
     slug: "first-aid-cpr",
     category: "Health & Fitness",
@@ -745,7 +771,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 31 with diff 21 = ratio 1.48. Red Cross app is the brand leader but it's dated and generic. Merging 'first aid' + 'resuscitation skills' keywords creates a focused CPR/emergency app.",
   },
   {
-    rank: 25,
+    rank: 26,
     name: "Eye Color Identifier",
     slug: "eye-color-identifier",
     category: "Lifestyle",
@@ -769,7 +795,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 21 with diff 15 = ratio 1.40. Eyepic dominates but diff 15 is low. Viral/fun concept with strong share mechanics.",
   },
   {
-    rank: 26,
+    rank: 27,
     name: "Darts Scorekeeper",
     slug: "darts-scorekeeper",
     category: "Sports",
@@ -794,7 +820,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 54 is very high. STRONG competition with multiple high-quality apps. Only worth building if you can differentiate significantly with voice scoring and Watch companion.",
   },
   {
-    rank: 56,
+    rank: 57,
     name: "Morse Code Translator",
     slug: "morse-code-translator",
     category: "Education",
@@ -818,7 +844,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 26 with diff 19 = ratio 1.37. #3 has 2,373 reviews but diff 19 is manageable. Fun utility with education angle.",
   },
   {
-    rank: 53,
+    rank: 54,
     name: "Wood Identifier",
     slug: "wood-identifier",
     category: "Reference",
@@ -842,7 +868,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 26 with diff 23 = ratio 1.13. WoodSense dominates with 3,354 reviews. But diff 23 is manageable and woodworkers pay well.",
   },
   {
-    rank: 37,
+    rank: 38,
     name: "Mole Checker",
     slug: "mole-checker",
     category: "Medical",
@@ -866,7 +892,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 24 with diff 19 = ratio 1.26. Scanoma leads with 1,278 reviews. Medical disclaimer needed. Users pay premium for health apps.",
   },
   {
-    rank: 31,
+    rank: 32,
     name: "Roof Pitch Calculator",
     slug: "roof-pitch-calculator",
     category: "Utilities",
@@ -886,7 +912,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 26 with diff 21 = ratio 1.24. Trade tools are underserved on mobile. Roofers and contractors pay well. Very little competition.",
   },
   {
-    rank: 46,
+    rank: 47,
     name: "Reptile Care Guide",
     slug: "reptile-care-guide",
     category: "Reference",
@@ -909,7 +935,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 25 with diff 19 = ratio 1.32. MorphMarket is a marketplace, not a care guide. The dedicated care guide has only 56 reviews.",
   },
   {
-    rank: 42,
+    rank: 43,
     name: "Fly Fishing Guide",
     slug: "fly-fishing-guide",
     category: "Sports",
@@ -929,7 +955,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 25 with diff 23 = ratio 1.09. Niche outdoor apps with moderate competition. Passionate community willing to pay.",
   },
   {
-    rank: 44,
+    rank: 45,
     name: "HVAC Calculator",
     slug: "hvac-calculator",
     category: "Utilities",
@@ -949,7 +975,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 20 with diff 19 = ratio 1.05. Small trade tool apps. HVAC techs are high-paying professionals who need mobile tools.",
   },
   {
-    rank: 45,
+    rank: 46,
     name: "Volleyball Scorer",
     slug: "volleyball-scorer",
     category: "Sports",
@@ -971,7 +997,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 21 with diff 35 = ratio 0.60. Higher difficulty but dedicated scorer has only 77 reviews. Shared codebase with other sport scorers reduces effort.",
   },
   {
-    rank: 49,
+    rank: 50,
     name: "Eisenhower Matrix",
     slug: "eisenhower-matrix",
     category: "Productivity",
@@ -994,7 +1020,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 22 with diff 35 = ratio 0.63. Focus Matrix has 1,563 reviews but the dedicated Eisenhower app has only 47. Room for a cleaner, simpler alternative.",
   },
   {
-    rank: 27,
+    rank: 28,
     name: "Auto Clicker",
     slug: "auto-clicker",
     category: "Utilities",
@@ -1018,7 +1044,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 68 is MASSIVE — highest pop in this batch. Diff 58 is high but the sheer search volume makes it worth targeting. Leader has 3,128 reviews showing strong demand.",
   },
   {
-    rank: 34,
+    rank: 35,
     name: "Volume Booster",
     slug: "volume-booster",
     category: "Utilities",
@@ -1042,7 +1068,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 60 is extremely high. Diff 49 is challenging but leader only has 443 reviews — moderate competition. Music/audio tools monetize well.",
   },
   {
-    rank: 11,
+    rank: 12,
     name: "Elf Alert",
     slug: "elf-alert",
     category: "Entertainment",
@@ -1066,7 +1092,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 59 is huge, diff 43 is manageable. SEASONAL app — build once, earn every holiday season. Leader has 684 reviews. Parents spend freely on Christmas magic for kids.",
   },
   {
-    rank: 30,
+    rank: 31,
     name: "Image Converter",
     slug: "image-converter",
     category: "Utilities",
@@ -1090,7 +1116,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 57 is very high. Diff 48 but leader only has 137 reviews — WEAK competition for such a high-pop keyword. Clear utility with daily use case.",
   },
   {
-    rank: 32,
+    rank: 33,
     name: "Light Meter",
     slug: "light-meter",
     category: "Photo & Video",
@@ -1114,7 +1140,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 54 is high. myLightMeter Pro leads with 2,428 reviews but it's old. Photographers and cinematographers pay premium prices for reliable tools.",
   },
   {
-    rank: 57,
+    rank: 58,
     name: "Tanning App",
     slug: "tanning-app",
     category: "Health & Fitness",
@@ -1138,7 +1164,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 53 is high. STRONG competition — Tanify dominates with 10,174 reviews. Only build if you can find a unique angle like AI skin analysis or social tanning.",
   },
   {
-    rank: 41,
+    rank: 42,
     name: "Never Have I Ever",
     slug: "never-have-i-ever",
     category: "Entertainment",
@@ -1162,7 +1188,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 51 is strong. Weekend build — just a content app with minimal logic. Leader only has 277 reviews. Party games have viral sharing built in.",
   },
   {
-    rank: 35,
+    rank: 36,
     name: "Pickleball Scorer",
     slug: "pickleball-scorer",
     category: "Sports",
@@ -1210,7 +1236,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 54 with diff 13 = ratio 4.15 — best ratio in the new batch. One dominant incumbent (2,600 reviews) and then a huge dropoff. Music apps convert well on hard paywall.",
   },
   {
-    rank: 36,
+    rank: 37,
     name: "Funko Pop Tracker",
     slug: "funko-pop-tracker",
     category: "Entertainment",
@@ -1237,7 +1263,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 56 with diff 46 = ratio 1.22 (high-pop-high-diff acceptable). Official Funko app is poorly rated (2.8), hobbyDB is general-purpose. Real opening for a clean Funko-only tracker.",
   },
   {
-    rank: 29,
+    rank: 30,
     name: "Cosplay Planner",
     slug: "cosplay-planner",
     category: "Lifestyle",
@@ -1263,7 +1289,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 30 with diff 23 = ratio 1.30. Only Cosplanner (323 reviews) is a real competitor for 'cosplay PLANNER' intent — rest of the space is novelty face-swap apps.",
   },
   {
-    rank: 38,
+    rank: 39,
     name: "Loom Knitting Counter",
     slug: "loom-knitting-counter",
     category: "Lifestyle",
@@ -1288,7 +1314,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 54 with diff 46 = ratio 1.17 (high-pop-high-diff acceptable). Most 'loom' results are screen recorders or games — real loom-craft niche has only Loomerly (668 reviews).",
   },
   {
-    rank: 39,
+    rank: 40,
     name: "Latin Daily Reader",
     slug: "latin-daily-reader",
     category: "Education",
@@ -1314,7 +1340,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 27 with diff 23 = ratio 1.17. Best dedicated app has under 1k reviews. Catholic/classical-revival demographic is growing.",
   },
   {
-    rank: 58,
+    rank: 59,
     name: "EMF Ghost Hunter",
     slug: "emf-ghost-hunter",
     category: "Entertainment",
@@ -1340,7 +1366,7 @@ export const ideas: Idea[] = [
     whyBuild: "Originally pop 47 / diff 41 (ratio 1.15). Pop crashed to 8 within days of merge — flagged DEAD until pop recovers. Concept retained for monitoring.",
   },
   {
-    rank: 40,
+    rank: 41,
     name: "Mineral Identifier",
     slug: "mineral-identifier",
     category: "Education",
@@ -1365,7 +1391,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 27 with diff 23 = ratio 1.17. Rock Identifier is the 800-lb gorilla, but mineral-specialty positioning still has open lanes — no dedicated mineral-specific apps with 1k+ reviews.",
   },
   {
-    rank: 28,
+    rank: 29,
     name: "Cat Breed Identifier",
     slug: "cat-breed-identifier",
     category: "Reference",
@@ -1390,7 +1416,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 23 with diff 17 = ratio 1.35. Cat Scanner is dominant, but the rest are tiny copycats. Beautiful-iOS-native + social-share angle wins.",
   },
   {
-    rank: 22,
+    rank: 23,
     name: "Liar's Dice Scorekeeper",
     slug: "liars-dice-scorekeeper",
     category: "Games",
@@ -1415,7 +1441,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 20 with diff 13 = ratio 1.54. No dedicated in-person scorekeeper exists — only an online play app. Clean opening for a tabletop companion.",
   },
   {
-    rank: 43,
+    rank: 44,
     name: "Cribbage Scoreboard",
     slug: "cribbage-scoreboard",
     category: "Games",
