@@ -49,13 +49,13 @@ const items = [
     icon: Rocket,
     title: "Build Time Estimates",
     description:
-      "Every app categorized: weekend builds (5 apps), week builds (28 apps), complex builds (7 apps).",
+      "Every app categorized: weekend builds (10 apps), week builds (49 apps), and complex builds (9 apps).",
   },
   {
     icon: Clock,
     title: "Competition Assessment",
     description:
-      "Each idea classified as WEAK (14), MODERATE (25), or STRONG (1) based on real competitor data.",
+      "Each idea classified by competition strength and launch status: WEAK, MODERATE, STRONG, DEAD, or SHIPPED.",
   },
   {
     icon: ListOrdered,
@@ -65,9 +65,9 @@ const items = [
   },
   {
     icon: ShieldCheck,
-    title: "Dead Ideas Flagged",
+    title: "Vague Intent Filtered",
     description:
-      "26 ideas with pop <= 5 were removed entirely. You only see the 40 that survived real-data validation.",
+      "High-metric keywords were rejected when the intent was too vague, brand-specific, or tied to proprietary hardware or portals.",
   },
 ];
 

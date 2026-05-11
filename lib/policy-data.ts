@@ -247,6 +247,11 @@ const REVIEW_RISK_SLUGS = new Set([
   "ai-jewelry-identifier",
   "stamp-quest",
   "schumann-resonance",
+  "armocromia-color-analysis",
+  "bartender-practice-game",
+  "cat-pain-score",
+  "game-aim-converter",
+  "rain-gauge-tracker",
 ]);
 
 const POLICY_OVERRIDES: Record<string, PolicyOverride> = {
@@ -474,6 +479,56 @@ const POLICY_OVERRIDES: Record<string, PolicyOverride> = {
       "Verify every hymn, arrangement, and notation asset is public domain or licensed.",
       "Do not imply denomination or publisher affiliation without permission.",
       "Keep shared setlists within the rights granted by your content licenses.",
+    ],
+  },
+  "armocromia-color-analysis": {
+    tags: ["AI_SYNTHETIC", "SENSITIVE_DATA", "PAYMENTS_SUBS"],
+    risk: "review",
+    summary: "Needs a policy pass for AI-assisted selfie analysis, sensitive face photos, and subscription claims.",
+    notes: [
+      "Ask for consent before processing selfies and explain whether analysis is on-device or server-side.",
+      "Avoid certainty claims around personal color type; present results as style guidance.",
+      "Keep before/after and shopping recommendations non-deceptive.",
+    ],
+  },
+  "bartender-practice-game": {
+    tags: ["KIDS_AGE", "PAYMENTS_SUBS"],
+    risk: "review",
+    summary: "Needs a policy pass for alcohol-adjacent content, age rating, and subscription disclosure.",
+    notes: [
+      "Set age ratings based on cocktail and bar-training content.",
+      "Keep a mocktail or education framing if screenshots might otherwise read as alcohol promotion.",
+      "Do not market the game to children or imply unsafe drinking behavior.",
+    ],
+  },
+  "cat-pain-score": {
+    tags: ["HEALTH_MEDICAL", "SENSITIVE_DATA", "AI_SYNTHETIC", "PAYMENTS_SUBS"],
+    risk: "review",
+    summary: "Needs a policy pass for pet health interpretation, photo handling, and AI-assisted scoring.",
+    notes: [
+      "Position outputs as tracking support for vet conversations, not diagnosis.",
+      "Treat pet photos, notes, and medication logs as sensitive user data.",
+      "Avoid urgent-care certainty claims and tell users to contact a veterinarian when symptoms are serious.",
+    ],
+  },
+  "game-aim-converter": {
+    tags: ["IP_LICENSING", "PAYMENTS_SUBS"],
+    risk: "review",
+    summary: "Needs a policy pass for trademark-sensitive game names and subscription packaging.",
+    notes: [
+      "Use game names only descriptively and avoid implying official affiliation.",
+      "Keep formula sources and conversion assumptions visible enough to avoid misleading users.",
+      "Do not use protected logos or trade dress in screenshots without rights.",
+    ],
+  },
+  "rain-gauge-tracker": {
+    tags: ["SAFETY_LOCATION_ACCURACY", "SENSITIVE_DATA", "PAYMENTS_SUBS"],
+    risk: "review",
+    summary: "Needs a policy pass for weather-data accuracy, location use, and stored home/garden data.",
+    notes: [
+      "Explain weather data source freshness and local-estimate limitations.",
+      "Request location only when adding a gauge or pulling local totals.",
+      "Avoid safety-critical flood or storm claims unless the data source supports them.",
     ],
   },
   "font-identifier": {

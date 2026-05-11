@@ -16,9 +16,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "58 Validated App Ideas | Astro-Verified iOS App Ideas with Real Data",
+  title: "68 Validated App Ideas | Astro-Verified iOS App Ideas with Real Data",
   description:
-    "58 validated iOS app ideas with real Astro MCP keyword data. Every pop/diff score verified, competitors checked, dead ideas removed. 6 already shipped.",
+    "68 validated iOS app ideas with real Astro MCP keyword data. Every pop/diff score verified, competitors checked, vague keywords removed. 6 already shipped.",
   keywords: [
     "app ideas",
     "ios app ideas",
@@ -32,18 +32,18 @@ export const metadata: Metadata = {
     "validated app ideas",
   ],
   openGraph: {
-    title: "58 Validated App Ideas | Astro-Verified iOS App Ideas with Real Data",
+    title: "68 Validated App Ideas | Astro-Verified iOS App Ideas with Real Data",
     description:
-      "58 validated iOS app ideas with real Astro MCP keyword data. Every pop/diff score verified, 26 dead ideas removed, 6 already shipped.",
+      "68 validated iOS app ideas with real Astro MCP keyword data. Every pop/diff score verified, vague keywords removed, 6 already shipped.",
     url: "https://100appsideas.com",
-    siteName: "58 Validated App Ideas",
+    siteName: "68 Validated App Ideas",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "58 Validated App Ideas | Astro-Verified iOS App Ideas with Real Data",
+    title: "68 Validated App Ideas | Astro-Verified iOS App Ideas with Real Data",
     description:
-      "58 validated iOS app ideas with real Astro MCP keyword data. 6 already shipped.",
+      "68 validated iOS app ideas with real Astro MCP keyword data. 6 already shipped.",
   },
 };
 

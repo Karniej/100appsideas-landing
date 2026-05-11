@@ -7,9 +7,9 @@ import { Check } from "lucide-react";
 const proofPoints = [
   "I have 8+ apps on the App Store — 6 from this list are already shipped (Fishify, ReWordly, VoxDub, DebatePro, PurrSense, Peptidly)",
   "Every keyword verified via live Astro MCP API — real pop/diff scores, not estimates",
-  "Re-validated 2026-05-10: every pop/diff score double-checked, statuses updated",
-  "250+ keywords checked across 118 app ideas — 58 survived validation",
-  "26 dead ideas removed (primary keyword pop <= 5 with no viable alternative)",
+  "Re-validated 2026-05-11: pop 20+ / diff 45 or lower keywords screened again",
+  "1,364 qualified Astro keywords reviewed — 68 survived as app ideas",
+  "Vague, brand-specific, and proprietary-companion keywords removed before merging",
   "Competition data from actual App Store search results — top 5 apps per keyword",
   "Ranked by pop/diff ratio — highest opportunity first, not random order",
   "Template groups so you can build one app and rapidly clone the next 5",
@@ -61,16 +61,16 @@ const SocialProofSection = () => {
           >
             <div className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800">
               <div className="text-4xl font-heading font-bold bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text mb-2">
-                250+
+                1,364
               </div>
               <div className="text-zinc-400 text-sm">
-                Keywords verified via live Astro MCP API
+                Qualified keywords screened from Astro
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800">
                 <div className="text-2xl font-heading font-bold text-emerald-400 mb-1">
-                  58
+                  68
                 </div>
                 <div className="text-zinc-400 text-xs">
                   Validated ideas in the database
@@ -78,10 +78,10 @@ const SocialProofSection = () => {
               </div>
               <div className="p-5 rounded-xl bg-zinc-900/50 border border-zinc-800">
                 <div className="text-2xl font-heading font-bold text-emerald-400 mb-1">
-                  26
+                  Many
                 </div>
                 <div className="text-zinc-400 text-xs">
-                  Dead ideas removed
+                  Vague keyword traps rejected
                 </div>
               </div>
             </div>
