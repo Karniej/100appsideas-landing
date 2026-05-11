@@ -18,14 +18,14 @@ import {
 } from "lucide-react";
 
 const features = [
-  { icon: FileText, text: "69 validated app ideas with full write-ups" },
+  { icon: FileText, text: "76 validated app ideas with full write-ups" },
   { icon: BarChart3, text: "Real Astro MCP keyword data (pop + diff scores)" },
   { icon: Users, text: "Competitor names, review counts, and ratings" },
   { icon: DollarSign, text: "What to charge (weekly/monthly/annual) per app" },
   { icon: Target, text: "5-8 target keywords per app" },
   { icon: Layers, text: "Template groups — build one, clone the next" },
   { icon: Clock, text: "Build time: weekend / week / complex" },
-  { icon: ListOrdered, text: "All 69 ranked by normalized opportunity score" },
+  { icon: ListOrdered, text: "All 76 ranked by normalized opportunity score" },
   {
     icon: Check,
     text: "Competition rated: WEAK / MODERATE / STRONG",
@@ -79,7 +79,7 @@ const PricingSection = () => {
                 What you get
               </p>
               <p className="text-zinc-300">
-                The complete 69 Validated App Ideas research document, plus everything
+                The complete 76 Validated App Ideas research document, plus everything
                 in the Ship React Native production boilerplate and 1 year of
                 private Discord community access.
               </p>
@@ -108,7 +108,7 @@ const PricingSection = () => {
             </a>
 
             <p className="text-center text-xs text-zinc-500 mt-4">
-              Includes the boilerplate, 69 Validated App Ideas, Discord community, and
+              Includes the boilerplate, 76 Validated App Ideas, Discord community, and
               lifetime updates.
             </p>
           </div>

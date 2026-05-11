@@ -252,6 +252,7 @@ const REVIEW_RISK_SLUGS = new Set([
   "cat-pain-score",
   "game-aim-converter",
   "rain-gauge-tracker",
+  "headache-tracker",
 ]);
 
 const POLICY_OVERRIDES: Record<string, PolicyOverride> = {
@@ -509,6 +510,16 @@ const POLICY_OVERRIDES: Record<string, PolicyOverride> = {
       "Position outputs as tracking support for vet conversations, not diagnosis.",
       "Treat pet photos, notes, and medication logs as sensitive user data.",
       "Avoid urgent-care certainty claims and tell users to contact a veterinarian when symptoms are serious.",
+    ],
+  },
+  "headache-tracker": {
+    tags: ["HEALTH_MEDICAL", "SENSITIVE_DATA", "PAYMENTS_SUBS"],
+    risk: "review",
+    summary: "Needs a policy pass for headache and migraine tracking, health-data handling, and report wording.",
+    notes: [
+      "Frame trends as a diary for clinician conversations, not diagnosis or treatment advice.",
+      "Treat pain logs, medication notes, and trigger history as sensitive health data.",
+      "Avoid implying emergency or clinical-grade recommendations from the tracker.",
     ],
   },
   "game-aim-converter": {

@@ -1,11 +1,11 @@
 # Astro Keyword Screening - 2026-05-11
 
-Source: Astro MCP temporary app `Best Keywords All 68 Apps` (`appId` 110), Astro MCP temporary app `WORTHLESS` (`appId` 31), the local opportunity cache in `data/keywords.db`, App Store search results, and the ASC app list.
+Source: Astro MCP temporary app `Best Keywords All 68 Apps` (`appId` 110), Astro MCP temporary app `WORTHLESS` (`appId` 31), Astro MCP temporary app `MAKESENSE?` (`appId` 111), the local opportunity cache in `data/keywords.db`, App Store search results, and the ASC app list.
 
 Filter used:
 
-- Popularity >= 20
-- Difficulty <= 45
+- Popularity > 20 for `MAKESENSE?`; popularity >= 20 for the earlier passes
+- Difficulty < 45 for `MAKESENSE?`; difficulty <= 45 for the earlier passes
 - Standalone app intent required
 
 Screening result:
@@ -14,9 +14,13 @@ Screening result:
 - 161 keywords matched the pop/diff filter in `Best Keywords All 68 Apps`
 - 7,857 tracked keywords in `WORTHLESS`
 - 55 keywords matched the pop/diff filter in `WORTHLESS`
-- 216 total qualified Astro keywords screened
-- 69 ideas are now listed on the landing site
-- 11 ideas were added in these passes
+- 108 tracked keywords in `MAKESENSE?`
+- 49 keywords matched the strict pop/diff filter in `MAKESENSE?`
+- 265 total qualified Astro keywords screened
+- 76 ideas are now listed on the landing site
+- 47 ideas remain active after the consolidated keyword audit
+- 28 ideas are dead / monitor-only after stale data was demoted
+- 18 ideas were added in these passes
 - 1 vague/brand-intent idea was replaced
 
 Added ideas:
@@ -32,6 +36,13 @@ Added ideas:
 - Tournament Bracket Maker - `bracket maker`, pop 49 / diff 41
 - Line Memorizer - `line learner`, pop 28 / diff 37
 - Feng Shui Room Planner - `feng shui`, pop 22 / diff 17
+- Seating Chart Planner - `seating chart`, pop 23 / diff 15
+- Jump Rope Counter - `jump rope`, pop 29 / diff 21
+- Bunco Scorekeeper - `bunco`, pop 23 / diff 33
+- Concrete Calculator - `concrete calculator`, pop 36 / diff 40
+- Knot Tying Guide - `knot tying`, pop 26 / diff 42
+- Square Footage Calculator - `square footage calculator`, pop 24 / diff 42
+- Headache Tracker - `headache tracker`, pop 30 / diff 39
 
 Removed/replaced:
 
@@ -46,6 +57,7 @@ Rejected high-metric keyword patterns:
 - Government or official-service lookups: `australian eta`, `caixa tem`, `ssa`, state wildlife agency names.
 - Vague fragments or typo noise: `tea all`, `tea born`, `timer:`, `counter:`, `time:`, `wiget:`, bracketed keywords.
 - IP-heavy entertainment brands: `haikyu!! fly high`, `ghostbusters`, `spiritfarer`, `baby shark`, `funko pop` unless the idea already has a clear non-infringing collector-tool angle.
+- MAKESENSE? rejects after competitor checks: `scale for grams` / `digital scale` because iPhone "scale" intent is misleading, `sobrief` and `fish verify` because they are brand searches, `skyjo` because it is IP-heavy, `height predictor` because the market is crowded with dubious growth claims, and duplicate ideas already represented by stronger entries.
 
 Selection rule:
 
