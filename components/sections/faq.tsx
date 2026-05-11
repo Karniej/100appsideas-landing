@@ -9,12 +9,12 @@ const faqs = [
   {
     question: "How do I access the ideas?",
     answer:
-      "After buying Ship React Native + Community, you'll get an access code in your welcome email. Enter it at 100appideas.com/ideas to browse all 68 validated ideas with filters, search, and full breakdowns — verified keyword data, competitor analysis, pricing, and template groups.",
+      "After buying Ship React Native + Community, you'll get an access code in your welcome email. Enter it at 100appideas.com/ideas to browse all 69 validated ideas with filters, search, and full breakdowns — verified keyword data, competitor analysis, pricing, and template groups.",
   },
   {
     question: "How were the ideas validated?",
     answer:
-      "Every keyword was verified via the live Astro MCP API — real-time App Store keyword data, not estimates. The latest pass screened 161 keywords with popularity 20+ and difficulty 45 or lower. Competition data comes from actual App Store search results (top 5 apps per keyword). Vague, brand-specific, and proprietary companion-app keywords were removed before merging. 68 ideas survived after the 2026-05-11 refresh.",
+      "Every keyword was verified via the live Astro MCP API — real-time App Store keyword data, not estimates. The latest pass screened 216 keywords with popularity 20+ and difficulty 45 or lower. Competition data comes from actual App Store search results (top 5 apps per keyword). Vague, brand-specific, and proprietary companion-app keywords were removed before merging. 69 ideas survived after the 2026-05-11 refresh.",
   },
   {
     question: "Have any of these ideas actually been built?",
@@ -29,7 +29,7 @@ const faqs = [
   {
     question: "Will someone else build these if I get access?",
     answer:
-      "Honestly? Probably. But the App Store is huge and most people who read research docs never ship anything. There are 68 ideas here — even if 10 people pick from this list, they'd each choose different ones. And execution matters way more than the idea.",
+      "Honestly? Probably. But the App Store is huge and most people who read research docs never ship anything. There are 69 ideas here — even if 10 people pick from this list, they'd each choose different ones. And execution matters way more than the idea.",
   },
   {
     question: "How current is the data?",

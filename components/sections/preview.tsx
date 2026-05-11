@@ -155,7 +155,7 @@ const PreviewSection = () => {
             </span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            These are the top 5 by normalized opportunity score. All 68 validated ideas have write-ups,
+            These are the top 5 by normalized opportunity score. All 69 validated ideas have write-ups,
             real Astro keyword data, competitor analysis, and pricing.
           </p>
         </motion.div>
@@ -299,13 +299,13 @@ const PreviewSection = () => {
                 <Lock className="h-5 w-5 text-zinc-400" />
               </div>
               <p className="text-zinc-400 text-sm">
-                63 more validated ideas with full details in the complete document
+                64 more validated ideas with full details in the complete document
               </p>
               <a
                 href="#pricing"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-black hover:from-amber-400 hover:to-orange-400 transition-all"
               >
-                Unlock All 68 Ideas
+                Unlock All 69 Ideas
                 <ChevronRight className="h-4 w-4" />
               </a>
             </div>
@@ -378,7 +378,7 @@ const PreviewSection = () => {
 
           <p className="text-sm text-zinc-500 italic">
             That&apos;s what every idea looks like &mdash; real Astro-verified keywords,
-            actual competitors, build notes, and pricing. All 68 validated ideas.
+            actual competitors, build notes, and pricing. All 69 validated ideas.
           </p>
         </motion.div>
       </div>

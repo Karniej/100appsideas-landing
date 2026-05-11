@@ -1123,6 +1123,32 @@ export const ideas: Idea[] = [
   },
   {
     rank: 45,
+    name: "Feng Shui Room Planner",
+    slug: "feng-shui-room-planner",
+    category: "Lifestyle",
+    group: "Home",
+    pop: 22, diff: 17, kwScore: 5, compReviews: 79, compScore: 25, totalScore: 49,
+    status: "MODERATE",
+    buildTime: "week",
+    pricingTier: "entry",
+    pricing: { weekly: "$4.99", monthly: "$9.99", annual: "$24.99", trial: "7-day" },
+    primaryKeyword: "feng shui",
+    concept: "Feng Shui compass and room planner for home layout decisions. Users scan or photograph a room, overlay a Bagua map, calculate Kua number and lucky directions, then get placement checklists for bed, desk, doors, mirrors, plants, and colors.",
+    targetKeywords: ["feng shui", "feng shui compass", "bagua map", "kua number", "feng shui room", "room planner", "home energy", "lucky directions"],
+    competitors: [
+      { name: "Chinese Feng Shui Tool Kit", reviews: "1,607", rating: "4.6" },
+      { name: "RoomFlow - Feng Shui Design", reviews: "79", rating: "4.6" },
+      { name: "Feng Shui Design by FengFlow", reviews: "54", rating: "4.4" },
+      { name: "HarmonySpace - Feng Shui", reviews: "135", rating: "4.3" },
+      { name: "Fengshui Theory", reviews: "85", rating: "4.7" },
+    ],
+    features: ["Compass-based facing direction", "Bagua map room overlay", "Kua number and lucky directions", "Room photo annotations", "Furniture placement checklist", "Daily home improvement tips"],
+    implementation: ["SwiftUI", "Core Location compass", "PhotosUI room imports", "Vision overlay positioning", "SwiftData", "Content database"],
+    monetization: "Freemium - one room and compass free, premium for unlimited rooms, Bagua overlays, Kua profile, saved plans, and exports. $4.99/week or $24.99/year.",
+    whyBuild: "Hidden in the WORTHLESS Astro app: pop 22 / diff 17 with clear standalone app intent. Broad demand is proven by Chinese Feng Shui Tool Kit at 1,607 ratings, but the modern room-planner competitors are small. ASO angle: own 'feng shui' and track long tails around compass, Bagua map, Kua number, room planner, and lucky directions.",
+  },
+  {
+    rank: 46,
     name: "Never Have I Ever",
     slug: "never-have-i-ever",
     category: "Entertainment",
@@ -1146,7 +1172,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 51 is strong. Weekend build — just a content app with minimal logic. Leader only has 277 reviews. Party games have viral sharing built in.",
   },
   {
-    rank: 46,
+    rank: 47,
     name: "Line Memorizer",
     slug: "line-memorizer",
     category: "Productivity",
@@ -1172,7 +1198,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 28 / diff 37 is weaker than the top additions, but the intent is specific and buyer-like. ASO angle: go broader than actors only - scripts, speeches, presentations, auditions, and creator reads.",
   },
   {
-    rank: 47,
+    rank: 48,
     name: "Mole Checker",
     slug: "mole-checker",
     category: "Medical",
@@ -1196,7 +1222,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 24 with diff 19 = ratio 1.26. Scanoma leads with 1,278 reviews. Medical disclaimer needed. Users pay premium for health apps.",
   },
   {
-    rank: 48,
+    rank: 49,
     name: "Reptile Care Guide",
     slug: "reptile-care-guide",
     category: "Reference",
@@ -1219,7 +1245,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 25 with diff 19 = ratio 1.32. MorphMarket is a marketplace, not a care guide. The dedicated care guide has only 56 reviews.",
   },
   {
-    rank: 49,
+    rank: 50,
     name: "Fly Fishing Guide",
     slug: "fly-fishing-guide",
     category: "Sports",
@@ -1239,7 +1265,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 25 with diff 23 = ratio 1.09. Niche outdoor apps with moderate competition. Passionate community willing to pay.",
   },
   {
-    rank: 50,
+    rank: 51,
     name: "HVAC Calculator",
     slug: "hvac-calculator",
     category: "Utilities",
@@ -1259,7 +1285,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 20 with diff 19 = ratio 1.05. Small trade tool apps. HVAC techs are high-paying professionals who need mobile tools.",
   },
   {
-    rank: 51,
+    rank: 52,
     name: "Volleyball Scorer",
     slug: "volleyball-scorer",
     category: "Sports",
@@ -1281,7 +1307,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 21 with diff 35 = ratio 0.60. Higher difficulty but dedicated scorer has only 77 reviews. Shared codebase with other sport scorers reduces effort.",
   },
   {
-    rank: 52,
+    rank: 53,
     name: "Auto Clicker",
     slug: "auto-clicker",
     category: "Utilities",
@@ -1305,7 +1331,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 68 is MASSIVE — highest pop in this batch. Diff 58 is high but the sheer search volume makes it worth targeting. Leader has 3,128 reviews showing strong demand.",
   },
   {
-    rank: 53,
+    rank: 54,
     name: "Volume Booster",
     slug: "volume-booster",
     category: "Utilities",
@@ -1329,7 +1355,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 60 is extremely high. Diff 49 is challenging but leader only has 443 reviews — moderate competition. Music/audio tools monetize well.",
   },
   {
-    rank: 54,
+    rank: 55,
     name: "Light Meter",
     slug: "light-meter",
     category: "Photo & Video",
@@ -1353,7 +1379,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 54 is high. myLightMeter Pro leads with 2,428 reviews but it's old. Photographers and cinematographers pay premium prices for reliable tools.",
   },
   {
-    rank: 55,
+    rank: 56,
     name: "Cribbage Scoreboard",
     slug: "cribbage-scoreboard",
     category: "Games",
@@ -1379,7 +1405,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 53 with diff 57 = ratio 0.93 (high-pop-high-diff acceptable). 'Cribbage' is dominated by playable game apps, but the SCOREKEEPER intent has only Cribbage Pegboard (1,576) as a real rival.",
   },
   {
-    rank: 56,
+    rank: 57,
     name: "Mineral Identifier",
     slug: "mineral-identifier",
     category: "Education",
@@ -1404,7 +1430,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 27 with diff 23 = ratio 1.17. Rock Identifier is the 800-lb gorilla, but mineral-specialty positioning still has open lanes — no dedicated mineral-specific apps with 1k+ reviews.",
   },
   {
-    rank: 57,
+    rank: 58,
     name: "Peptide Calculator",
     slug: "peptide-calculator",
     category: "Health & Fitness",
@@ -1430,7 +1456,7 @@ export const ideas: Idea[] = [
     mergeNote: "SHIPPED as Peptidly (com.silpho.peptidly) by Silpho LLC."
   },
   {
-    rank: 58,
+    rank: 59,
     name: "Tanning App",
     slug: "tanning-app",
     category: "Health & Fitness",
@@ -1454,7 +1480,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 53 is high. STRONG competition — Tanify dominates with 10,174 reviews. Only build if you can find a unique angle like AI skin analysis or social tanning.",
   },
   {
-    rank: 59,
+    rank: 60,
     name: "Wood Identifier",
     slug: "wood-identifier",
     category: "Reference",
@@ -1478,7 +1504,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 26 with diff 23 = ratio 1.13. WoodSense dominates with 3,354 reviews. But diff 23 is manageable and woodworkers pay well.",
   },
   {
-    rank: 60,
+    rank: 61,
     name: "Shot Timer",
     slug: "shot-timer",
     category: "Sports",
@@ -1503,7 +1529,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 29 with diff 13 = ratio 2.23. Firearms community always wants alternatives. #4 has terrible rating (2.0). Firearms users pay premium prices.",
   },
   {
-    rank: 61,
+    rank: 62,
     name: "Pill Counter AI",
     slug: "pill-counter-ai",
     category: "Medical",
@@ -1527,7 +1553,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 36 with diff 15 = ratio 2.40. Leader has 2.9 rating (opportunity!). B2B pharmacy market pays well. Merges pill counter + pill identifier for double keyword coverage.",
   },
   {
-    rank: 62,
+    rank: 63,
     name: "Eisenhower Matrix",
     slug: "eisenhower-matrix",
     category: "Productivity",
@@ -1550,7 +1576,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 22 with diff 35 = ratio 0.63. Focus Matrix has 1,563 reviews but the dedicated Eisenhower app has only 47. Room for a cleaner, simpler alternative.",
   },
   {
-    rank: 63,
+    rank: 64,
     name: "Deep Conversation Cards",
     slug: "deep-conversation-cards",
     category: "Entertainment",
@@ -1576,7 +1602,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 44 with diff 13 = ratio 3.38. HH Talk dominates but many small apps coexist. Content app = easy to differentiate with better card packs. Merges 'deep conversations' + 'conversation starters' keywords.",
   },
   {
-    rank: 64,
+    rank: 65,
     name: "Bingo Caller",
     slug: "bingo-caller",
     category: "Entertainment",
@@ -1601,7 +1627,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 35 with diff 15 = ratio 2.33. Top caller has only 70 reviews at 4.2 rating. #2 and #3 have bad ratings. Clear opportunity for a polished caller app.",
   },
   {
-    rank: 65,
+    rank: 66,
     name: "Morse Code Translator",
     slug: "morse-code-translator",
     category: "Education",
@@ -1625,7 +1651,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 26 with diff 19 = ratio 1.37. #3 has 2,373 reviews but diff 19 is manageable. Fun utility with education angle.",
   },
   {
-    rank: 66,
+    rank: 67,
     name: "Coin Flip",
     slug: "coin-flip",
     category: "Utilities",
@@ -1649,7 +1675,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 38 with diff 23 = ratio 1.65. Flip a Coin App dominates with 2,894 reviews. But the concept is SO simple that a beautiful 3D animated version could coexist.",
   },
   {
-    rank: 67,
+    rank: 68,
     name: "Floating Apps",
     slug: "floating-apps",
     category: "Productivity",
@@ -1673,7 +1699,7 @@ export const ideas: Idea[] = [
     whyBuild: "Pop 43 with diff 19 = ratio 2.26. Top app has 846 reviews. iOS limits what's possible but PiP-based floating works. High pop keyword.",
   },
   {
-    rank: 68,
+    rank: 69,
     name: "EMF Ghost Hunter",
     slug: "emf-ghost-hunter",
     category: "Entertainment",

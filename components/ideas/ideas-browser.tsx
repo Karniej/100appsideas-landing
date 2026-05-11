@@ -219,7 +219,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
           <div>
             <div className="inline-flex items-center gap-2 text-sm font-medium text-amber-300">
               <ShieldCheck className="h-4 w-4" />
-              Policy coverage for all 68 ideas
+              Policy coverage for all 69 ideas
             </div>
             <p className="mt-1 text-sm text-zinc-400">
               Each idea now gets reusable policy tags, a submission risk level, and launch-note guidance.

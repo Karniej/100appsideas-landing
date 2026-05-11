@@ -44,7 +44,7 @@ const HeroSection = () => {
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-500 border border-amber-500/20">
               <Search className="h-3 w-3" />
-              161 qualified keywords screened &mdash; re-validated 2026-05-11
+              216 qualified keywords screened &mdash; re-validated 2026-05-11
             </span>
           </motion.div>
 
@@ -54,7 +54,7 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
           >
-            68 Validated App Ideas With
+            69 Validated App Ideas With
             <br />
             <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text">
               Real App Store Data
@@ -69,7 +69,7 @@ const HeroSection = () => {
           >
             Every keyword verified via live{" "}
             <a href="https://tryastro.app" target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:text-amber-300 underline underline-offset-2">Astro</a>
-            {" "}MCP API. 161 pop 20+ / diff 45 or lower keywords screened, vague intent removed, 6 already shipped.
+            {" "}MCP API. 216 pop 20+ / diff 45 or lower keywords screened, vague intent removed, 6 already shipped.
             Real pop/diff scores, real competitors, real review counts &mdash; not vibes. Last validated 2026-05-11.
           </motion.p>
 
@@ -127,7 +127,7 @@ const HeroSection = () => {
             <div className="inline-flex p-3 rounded-lg bg-amber-500/10 mb-4">
               <Search className="h-6 w-6 text-amber-500" />
             </div>
-            <div className="text-3xl font-heading font-bold mb-1">161</div>
+            <div className="text-3xl font-heading font-bold mb-1">216</div>
             <p className="text-sm text-zinc-400">
               Qualified keywords screened from Astro
             </p>

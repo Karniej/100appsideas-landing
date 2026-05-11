@@ -1,6 +1,6 @@
 # Astro Keyword Screening - 2026-05-11
 
-Source: Astro MCP temporary app `Best Keywords All 68 Apps` (`appId` 110), the local opportunity cache in `data/keywords.db`, App Store search results, and the ASC app list.
+Source: Astro MCP temporary app `Best Keywords All 68 Apps` (`appId` 110), Astro MCP temporary app `WORTHLESS` (`appId` 31), the local opportunity cache in `data/keywords.db`, App Store search results, and the ASC app list.
 
 Filter used:
 
@@ -10,10 +10,13 @@ Filter used:
 
 Screening result:
 
-- 5,247 tracked keywords in the Astro temporary app
-- 161 keywords matched the pop/diff filter
-- 68 ideas are now listed on the landing site
-- 10 ideas were added in this pass
+- 5,247 tracked keywords in `Best Keywords All 68 Apps`
+- 161 keywords matched the pop/diff filter in `Best Keywords All 68 Apps`
+- 7,857 tracked keywords in `WORTHLESS`
+- 55 keywords matched the pop/diff filter in `WORTHLESS`
+- 216 total qualified Astro keywords screened
+- 69 ideas are now listed on the landing site
+- 11 ideas were added in these passes
 - 1 vague/brand-intent idea was replaced
 
 Added ideas:
@@ -28,10 +31,12 @@ Added ideas:
 - Pickleball Drills Coach - `pickleball drills`, pop 26 / diff 23
 - Tournament Bracket Maker - `bracket maker`, pop 49 / diff 41
 - Line Memorizer - `line learner`, pop 28 / diff 37
+- Feng Shui Room Planner - `feng shui`, pop 22 / diff 17
 
 Removed/replaced:
 
 - `watch me grow` - metrics improved, but the App Store intent is mixed between a daycare camera brand, generic baby-growth wording, and novelty baby-generator apps. It is not clean enough for this list.
+- `WORTHLESS` temporary app - retained long enough to extract `feng shui`, then removed from Astro after screening.
 
 Rejected high-metric keyword patterns:
 
