@@ -76,6 +76,8 @@ Product:
 - Primary keyword: ${idea.primaryKeyword}
 - Build size: ${BUILD_TIME_COPY[idea.buildTime]}
 - Pricing tier: ${idea.pricingTier}
+- Opportunity size tier: ${idea.opportunitySizeTier ?? "unknown"}
+- Opportunity size score: ${idea.opportunitySizeScore ?? "unknown"}
 
 Concept:
 ${idea.concept}
@@ -95,6 +97,12 @@ Opportunity signal:
 - Competitive read: ${STATUS_COPY[idea.status]}
 - Why this is worth building: ${idea.whyBuild}
 
+Build target:
+- Build the smallest version that still solves the core user problem end to end.
+- If the opportunity size is large, preserve room for history, export, or premium depth.
+- If the opportunity size is medium or small, keep the MVP brutally focused and avoid optional subflows.
+- Treat the ranking data as a prioritization signal, not a product spec.
+
 Target keywords:
 ${asBullets(idea.targetKeywords)}
 
@@ -110,6 +118,7 @@ ${asBullets(idea.implementation)}
 User experience requirements:
 - The first screen should be the real product workflow, not a marketing page.
 - Make the primary action obvious within one screen.
+- Use the core keyword and competitor positioning to choose the opening screen and the default state.
 - Include polished empty states, loading states, error states, and at least a small amount of sample or seed data where useful.
 - Prefer local-first behavior for the first version. Add sync, cloud storage, or accounts only if the MVP cannot function without them.
 - Use a restrained, modern interface appropriate for "${idea.category}" rather than a generic template.
@@ -131,6 +140,7 @@ ${asBullets(policyAdjustments)}
 
 Build deliverables:
 - Working app screens for the full MVP flow.
+- A short implementation plan before code if the build is non-trivial.
 - Local persistence for user-created data where the concept needs history, favorites, notes, scores, or saved records.
 - A small domain model that matches the product, not just generic strings.
 - Reusable components for repeated UI.
