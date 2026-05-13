@@ -6,7 +6,7 @@ import { Check } from "lucide-react";
 
 const proofPoints = [
   "I have 8+ apps on the App Store — 6 from this list are already shipped (Fishify, ReWordly, VoxDub, DebatePro, PurrSense, Peptidly)",
-  "Every keyword verified via live Astro MCP API — real pop/diff scores, not estimates",
+  "Every keyword verified via live Astro MCP API — real volume, chance, and difficulty scores, not estimates",
   "Re-validated 2026-05-11: pop 20+ / diff 45 or lower keywords screened again",
   "265 qualified Astro keywords reviewed — 76 documented, 47 still active after audit",
   "Vague, brand-specific, and proprietary-companion keywords removed before merging",

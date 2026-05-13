@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ShieldAlert, ShieldCheck } from "lucide-react";
-import { ideas } from "@/lib/ideas-data";
+import { ideas } from "@/lib/ideas-ranked";
 import {
   POLICY_GUIDES,
   getHighestRiskIdeas,

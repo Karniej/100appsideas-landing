@@ -56,9 +56,9 @@ const POLICY_RISK_STYLES: Record<PolicyRisk, string> = {
 };
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
-  { value: "rank", label: "Best opportunity first" },
-  { value: "score", label: "Highest score first" },
-  { value: "popularity", label: "Most searched first" },
+  { value: "rank", label: "Merged opportunity first" },
+  { value: "score", label: "Highest merged score first" },
+  { value: "popularity", label: "Highest volume first" },
   { value: "difficulty", label: "Easiest to rank first" },
   { value: "competition", label: "Fewest competitors first" },
 ];
@@ -180,7 +180,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
 
     switch (sortBy) {
       case "rank": result.sort((a, b) => a.rank - b.rank); break;
-      case "popularity": result.sort((a, b) => b.pop - a.pop); break;
+      case "popularity": result.sort((a, b) => (b.vol ?? b.pop) - (a.vol ?? a.pop)); break;
       case "difficulty": result.sort((a, b) => a.diff - b.diff); break;
       case "score": result.sort((a, b) => b.totalScore - a.totalScore); break;
       case "competition": result.sort((a, b) => a.compReviews - b.compReviews); break;
@@ -670,16 +670,17 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                       {/* Score cards */}
                       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
                         {[
-                          { label: "Pop", value: idea.pop, color: "text-white" },
-                          { label: "Diff", value: idea.diff, color: idea.diff <= 20 ? "text-emerald-400" : idea.diff <= 30 ? "text-amber-400" : "text-red-400" },
-                          { label: "Apps", value: idea.appsCount, color: idea.appsCount <= 180 ? "text-emerald-400" : idea.appsCount <= 225 ? "text-amber-400" : "text-red-400" },
+                          { label: "Vol", value: idea.vol ?? idea.pop, color: (idea.vol ?? idea.pop) >= 50 ? "text-emerald-400" : (idea.vol ?? idea.pop) >= 35 ? "text-amber-400" : "text-red-400" },
+                          { label: "Chance", value: idea.chance ?? "—", color: typeof idea.chance === "number" ? idea.chance >= 80 ? "text-emerald-400" : idea.chance >= 65 ? "text-amber-400" : "text-red-400" : "text-zinc-500" },
+                          { label: "Diff", value: idea.diff, color: idea.diff <= 25 ? "text-emerald-400" : idea.diff <= 40 ? "text-amber-400" : "text-red-400" },
+                          { label: "Results", value: idea.results ?? idea.appsCount, color: (idea.results ?? idea.appsCount) <= 180 ? "text-emerald-400" : (idea.results ?? idea.appsCount) <= 225 ? "text-amber-400" : "text-red-400" },
                           { label: "Intent", value: idea.intentScore, color: idea.intentScore >= 90 ? "text-emerald-400" : idea.intentScore >= 70 ? "text-amber-400" : "text-red-400" },
-                          { label: "KW Score", value: idea.kwScore, color: "text-white", signed: true },
+                          { label: "Fox Score", value: idea.foxScore ?? idea.kwScore, color: "text-white", signed: true },
                           { label: "Total", value: idea.totalScore, color: "text-amber-400", signed: true },
                         ].map((stat) => (
                           <div key={stat.label} className="text-center p-3 rounded-lg bg-zinc-800/50 border border-zinc-800">
                             <div className={cn("text-lg font-bold font-heading", stat.color)}>
-                              {stat.signed && stat.value > 0 ? `+${stat.value}` : stat.value}
+                              {typeof stat.value === "number" ? stat.signed && stat.value > 0 ? `+${stat.value}` : stat.value : stat.value}
                             </div>
                             <div className="text-[10px] text-zinc-500 mt-0.5">{stat.label}</div>
                           </div>
@@ -790,12 +791,15 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                             {[
                               { label: "Group", value: idea.group },
                               { label: "Ranking KW", value: idea.rankingKeyword },
-                              { label: "Apps Count", value: idea.appsCount.toLocaleString() },
+                              { label: "Fox KW", value: idea.foxKeyword ?? "—" },
+                              { label: "Vol", value: (idea.vol ?? idea.pop).toLocaleString() },
+                              { label: "Chance", value: typeof idea.chance === "number" ? `${idea.chance}/100` : "—" },
+                              { label: "Diff", value: idea.diff.toString() },
+                              { label: "Results", value: (idea.results ?? idea.appsCount).toLocaleString() },
                               { label: "Qualified KWs", value: idea.qualifiedKeywordCount.toString() },
                               { label: "Intent", value: `${idea.intentScore}/100` },
-                              { label: "KW Score", value: `+${idea.kwScore}` },
-                              { label: "Comp Score", value: `+${idea.compScore}` },
-                              { label: "Comp Reviews", value: idea.compReviews.toLocaleString() },
+                              { label: "Fox Score", value: `+${idea.foxScore ?? idea.kwScore}` },
+                              { label: "Merged Total", value: `+${idea.totalScore}` },
                             ].map((row) => (
                               <div key={row.label} className="flex justify-between text-sm">
                                 <span className="text-zinc-500">{row.label}</span>

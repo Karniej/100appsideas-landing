@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import PasswordGate from "@/components/ideas/password-gate";
 import IdeasBrowser from "@/components/ideas/ideas-browser";
-import { ideas } from "@/lib/ideas-data";
+import { ideas } from "@/lib/ideas-ranked";
 
 export const metadata = {
   title: "76 Validated App Ideas Browser",

@@ -83,14 +83,14 @@ ${idea.concept}
 Opportunity signal:
 - Dataset rank: #${idea.rank}
 - Ranking keyword: ${idea.rankingKeyword}
-- Popularity score: ${idea.pop}
+- Fox keyword: ${idea.foxKeyword ?? "not matched"}
+- Search volume: ${idea.vol ?? idea.pop}
+- Chance score: ${typeof idea.chance === "number" ? `${idea.chance}/100` : "not matched"}
 - Keyword difficulty: ${idea.diff}
-- App Store apps on ranking keyword: ${idea.appsCount}
+- Search results: ${idea.results ?? idea.appsCount}
 - Qualified tracked keywords: ${idea.qualifiedKeywordCount}
 - Search intent score: ${idea.intentScore}/100
-- Keyword score: ${idea.kwScore}
-- Competition review count: ${idea.compReviews.toLocaleString()}
-- Competition score: ${idea.compScore}
+- Fox score: ${idea.foxScore ?? idea.kwScore}
 - Total opportunity score: ${idea.totalScore}
 - Competitive read: ${STATUS_COPY[idea.status]}
 - Why this is worth building: ${idea.whyBuild}

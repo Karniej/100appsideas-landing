@@ -25,7 +25,7 @@ const items = [
     icon: BarChart3,
     title: "Verified Keyword Data",
     description:
-      "Real popularity and difficulty scores verified via live Astro MCP API — not estimates or guesses.",
+      "Real volume, chance, and difficulty scores verified via live Astro MCP API — not estimates or guesses.",
   },
   {
     icon: Users,

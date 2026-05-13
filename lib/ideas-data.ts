@@ -17,6 +17,11 @@ export type Idea = {
   appsCount: number;
   qualifiedKeywordCount: number;
   intentScore: number;
+  vol?: number;
+  chance?: number;
+  results?: number;
+  foxScore?: number;
+  foxKeyword?: string;
   pop: number;
   diff: number;
   kwScore: number;

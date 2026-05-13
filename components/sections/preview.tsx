@@ -25,31 +25,9 @@ type PreviewIdea = {
 const previewIdeas: PreviewIdea[] = [
   {
     rank: 1,
-    name: "Amino Acid Quiz Trainer",
-    pop: 54,
-    diff: 15,
-    competitor: "Amino Acid Quiz",
-    competitorReviews: "920",
-    competitorRating: "4.9",
-    category: "Education",
-    status: "STRONG",
-  },
-  {
-    rank: 2,
-    name: "PSAT Score Calculator",
-    pop: 52,
-    diff: 38,
-    competitor: "PSAT Score Calculator",
-    competitorReviews: "0",
-    competitorRating: "-",
-    category: "Education",
-    status: "STRONG",
-  },
-  {
-    rank: 3,
     name: "Chess Clock",
     pop: 48,
-    diff: 17,
+    diff: 21,
     competitor: "Chess Clock by Chess.com",
     competitorReviews: "334",
     competitorRating: "4.6",
@@ -57,25 +35,47 @@ const previewIdeas: PreviewIdea[] = [
     status: "STRONG",
   },
   {
+    rank: 2,
+    name: "Mini Golf Scorecard",
+    pop: 48,
+    diff: 39,
+    competitor: "Mini-Golf Score Card",
+    competitorReviews: "3,225",
+    competitorRating: "4.8",
+    category: "Sports",
+    status: "MODERATE",
+  },
+  {
+    rank: 3,
+    name: "Conduit Bend Calculator",
+    pop: 56,
+    diff: 21,
+    competitor: "QuickBend: Conduit Bending",
+    competitorReviews: "3,706",
+    competitorRating: "4.8",
+    category: "Utilities",
+    status: "MODERATE",
+  },
+  {
     rank: 4,
-    name: "Check Writer",
-    pop: 34,
-    diff: 9,
-    competitor: "Check Writer: Print Checks",
-    competitorReviews: "304",
+    name: "Social Security Calculator",
+    pop: 54,
+    diff: 34,
+    competitor: "Social Security Optimizer:Boss",
+    competitorReviews: "1,442",
     competitorRating: "4.2",
     category: "Finance",
-    status: "STRONG",
+    status: "MODERATE",
   },
   {
     rank: 5,
-    name: "ID Scanner Pro",
-    pop: 53,
+    name: "Amino Acid Quiz Trainer",
+    pop: 50,
     diff: 15,
-    competitor: "ID Scanner Professional",
-    competitorReviews: "3,024",
-    competitorRating: "4.6",
-    category: "Business",
+    competitor: "Amino Acid Quiz",
+    competitorReviews: "920",
+    competitorRating: "4.9",
+    category: "Education",
     status: "STRONG",
   },
   {
@@ -178,7 +178,7 @@ const PreviewSection = () => {
                     App Idea
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider">
-                    Pop
+                    Volume
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider">
                     Diff
@@ -321,51 +321,50 @@ const PreviewSection = () => {
         >
           <div className="flex items-center gap-3 mb-6">
             <span className="px-2.5 py-1 rounded text-xs font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20">
-              #1 Ranked &mdash; Score 60
+              #1 Ranked &mdash; Score 61
             </span>
             <span className="px-2.5 py-1 rounded text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
               EXACT APP INTENT
             </span>
           </div>
           <h3 className="font-heading text-2xl font-bold mb-2">
-            Amino Acid Quiz Trainer
+            Chess Clock
           </h3>
           <p className="text-zinc-400 mb-6">
-            Fast amino acid memorization for biology, biochem, MCAT, nursing,
-            and pre-med students. Drill structures, codes, polarity, charge,
-            and essential amino acids with spaced repetition.
+            Minimalist chess and board-game timer with Fischer, Bronstein, and
+            increment controls. Fast one-handed handling, haptics, presets, and
+            a clean tournament mode for club nights.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="p-3 rounded-lg bg-zinc-800/50">
-              <div className="text-xs text-zinc-500 mb-1">Popularity</div>
-              <div className="text-lg font-semibold">54</div>
+              <div className="text-xs text-zinc-500 mb-1">Volume</div>
+              <div className="text-lg font-semibold">48</div>
             </div>
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">Difficulty</div>
-              <div className="text-lg font-semibold text-emerald-400">15</div>
+              <div className="text-lg font-semibold text-emerald-400">21</div>
             </div>
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">
                 Top Competitor Reviews
               </div>
-              <div className="text-lg font-semibold text-amber-400">920</div>
+              <div className="text-lg font-semibold text-amber-400">334</div>
             </div>
             <div className="p-3 rounded-lg bg-zinc-800/50">
               <div className="text-xs text-zinc-500 mb-1">Build Time</div>
-              <div className="text-lg font-semibold">Weekend</div>
+              <div className="text-lg font-semibold">3-7 days</div>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-2 mb-6">
             {[
-              "amino acid quiz",
-              "amino acids",
-              "biochemistry",
-              "mcat",
-              "biology quiz",
-              "flashcards",
-              "organic chemistry",
+              "chess clock",
+              "chess timer",
+              "game timer",
+              "board game timer",
+              "blitz timer",
+              "tournament clock",
             ].map((kw) => (
               <span
                 key={kw}
