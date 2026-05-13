@@ -35,6 +35,7 @@ import {
 
 type SortOption = "rank" | "popularity" | "difficulty" | "score" | "competition";
 type IdeaTier = "active" | "watchlist" | "shipped" | "dead";
+type OpportunitySizeFilter = "ALL" | "small" | "medium" | "large";
 
 const STATUS_COLORS: Record<IdeaStatus, { border: string; bg: string; text: string; dot: string }> = {
   SHIPPED: { border: "border-l-emerald-500", bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-400" },
@@ -53,6 +54,12 @@ const POLICY_RISK_STYLES: Record<PolicyRisk, string> = {
   low: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
   review: "bg-amber-500/10 text-amber-400 border-amber-500/20",
   high: "bg-red-500/10 text-red-400 border-red-500/20",
+};
+
+const OPPORTUNITY_SIZE_STYLES: Record<Exclude<OpportunitySizeFilter, "ALL">, string> = {
+  small: "bg-zinc-900 text-zinc-500 border-zinc-800 hover:text-zinc-300 hover:border-zinc-700",
+  medium: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+  large: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
 };
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
@@ -131,6 +138,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
   const [selectedStatus, setSelectedStatus] = useState("ALL");
   const [selectedBuildTime, setSelectedBuildTime] = useState("ALL");
   const [selectedPolicyRisk, setSelectedPolicyRisk] = useState<PolicyRisk | "ALL">("ALL");
+  const [selectedOpportunitySize, setSelectedOpportunitySize] = useState<OpportunitySizeFilter>("ALL");
   const [sortBy, setSortBy] = useState<SortOption>("rank");
   const [expandedRank, setExpandedRank] = useState<number | null>(null);
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
@@ -177,6 +185,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
     if (selectedStatus !== "ALL") result = result.filter((i) => i.status === selectedStatus);
     if (selectedBuildTime !== "ALL") result = result.filter((i) => i.buildTime === selectedBuildTime);
     if (selectedPolicyRisk !== "ALL") result = result.filter((i) => getPolicyProfile(i).risk === selectedPolicyRisk);
+    if (selectedOpportunitySize !== "ALL") result = result.filter((i) => i.opportunitySizeTier === selectedOpportunitySize);
 
     switch (sortBy) {
       case "rank": result.sort((a, b) => a.rank - b.rank); break;
@@ -186,7 +195,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
       case "competition": result.sort((a, b) => a.compReviews - b.compReviews); break;
     }
     return result;
-  }, [ideas, searchQuery, selectedCategory, selectedStatus, selectedBuildTime, selectedPolicyRisk, sortBy]);
+  }, [ideas, searchQuery, selectedCategory, selectedStatus, selectedBuildTime, selectedPolicyRisk, selectedOpportunitySize, sortBy]);
 
   const clearFilters = () => {
     setSearchQuery("");
@@ -194,10 +203,11 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
     setSelectedStatus("ALL");
     setSelectedBuildTime("ALL");
     setSelectedPolicyRisk("ALL");
+    setSelectedOpportunitySize("ALL");
     setSortBy("rank");
   };
 
-  const hasActiveFilters = searchQuery || selectedCategory !== "ALL" || selectedStatus !== "ALL" || selectedBuildTime !== "ALL" || selectedPolicyRisk !== "ALL" || sortBy !== "rank";
+  const hasActiveFilters = searchQuery || selectedCategory !== "ALL" || selectedStatus !== "ALL" || selectedBuildTime !== "ALL" || selectedPolicyRisk !== "ALL" || selectedOpportunitySize !== "ALL" || sortBy !== "rank";
 
   // Scroll expanded item into view
   useEffect(() => {
@@ -398,6 +408,31 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
               )}
             >
               {risk.label}
+            </button>
+          ))}
+
+          <div className="w-px h-5 bg-zinc-800 mx-1 hidden sm:block" />
+
+          {/* Opportunity size pills */}
+          {([
+            { key: "ALL" as const, label: "Any size" },
+            { key: "large" as const, label: "Large market" },
+            { key: "medium" as const, label: "Medium market" },
+            { key: "small" as const, label: "Small market" },
+          ]).map((size) => (
+            <button
+              key={size.key}
+              onClick={() => setSelectedOpportunitySize(size.key)}
+              className={cn(
+                "px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-200",
+                selectedOpportunitySize === size.key
+                  ? size.key === "ALL"
+                    ? "bg-white/10 text-white border-white/20"
+                    : OPPORTUNITY_SIZE_STYLES[size.key]
+                  : "bg-zinc-900 text-zinc-500 border-zinc-800 hover:text-zinc-300 hover:border-zinc-700"
+              )}
+            >
+              {size.label}
             </button>
           ))}
 
@@ -796,6 +831,8 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                               { label: "Chance", value: typeof idea.chance === "number" ? `${idea.chance}/100` : "—" },
                               { label: "Diff", value: idea.diff.toString() },
                               { label: "Results", value: (idea.results ?? idea.appsCount).toLocaleString() },
+                              { label: "Market Size", value: idea.opportunitySizeTier ? `${idea.opportunitySizeTier[0].toUpperCase()}${idea.opportunitySizeTier.slice(1)}` : "—" },
+                              { label: "Size Score", value: idea.opportunitySizeScore?.toString() ?? "—" },
                               { label: "Qualified KWs", value: idea.qualifiedKeywordCount.toString() },
                               { label: "Intent", value: `${idea.intentScore}/100` },
                               { label: "Fox Score", value: `+${idea.foxScore ?? idea.kwScore}` },

@@ -17,12 +17,11 @@ const foxMap = new Map<string, FoxKeywordMetric>(
   (foxKeywords as FoxKeywordMetric[]).map((row) => [row.keyword.toLowerCase().trim(), row])
 );
 
-const STATUS_BUCKET: Record<Idea["status"], number> = {
-  STRONG: 0,
-  MODERATE: 0,
-  WEAK: 0,
-  SHIPPED: 1,
-  DEAD: 2,
+const TIER_BUCKET: Record<"active" | "watchlist" | "shipped" | "dead", number> = {
+  active: 0,
+  watchlist: 1,
+  shipped: 2,
+  dead: 3,
 };
 
 function normalizeKeyword(keyword: string) {
@@ -56,6 +55,26 @@ function scorePolicy(profile: ReturnType<typeof getPolicyProfile>) {
   return 0;
 }
 
+function getIdeaTier(idea: Idea) {
+  if (idea.status === "DEAD") return "dead" as const;
+  if (idea.status === "SHIPPED") return "shipped" as const;
+  if (idea.status === "WEAK") return "watchlist" as const;
+  return "active" as const;
+}
+
+function scoreOpportunitySize(idea: Idea, fox: { metric: FoxKeywordMetric } | null) {
+  const volume = fox?.metric.vol ?? idea.pop;
+  const results = fox?.metric.results ?? idea.appsCount;
+  const base = volume * 2 + idea.qualifiedKeywordCount * 10 + idea.intentScore * 0.15 - results / 40;
+  return Math.round(base);
+}
+
+function getOpportunitySizeTier(score: number) {
+  if (score >= 100) return "large" as const;
+  if (score >= 75) return "medium" as const;
+  return "small" as const;
+}
+
 function findBestFoxKeyword(idea: Idea) {
   const candidates = [idea.primaryKeyword, ...idea.targetKeywords];
   let best: { keyword: string; metric: FoxKeywordMetric; score: number } | null = null;
@@ -84,6 +103,8 @@ function mergeIdea(idea: Idea): RankedIdea {
   const totalScore = fox
     ? Math.round(fox.score + intentDelta + clusterBonus + buildDelta - policyDelta)
     : Math.round(idea.totalScore + intentDelta - policyDelta);
+  const opportunitySizeScore = scoreOpportunitySize(idea, fox);
+  const opportunitySizeTier = getOpportunitySizeTier(opportunitySizeScore);
 
   const merged: RankedIdea = {
     ...idea,
@@ -92,6 +113,8 @@ function mergeIdea(idea: Idea): RankedIdea {
     results: fox?.metric.results ?? idea.appsCount,
     foxScore: fox ? Math.round(fox.score) : idea.kwScore,
     foxKeyword: fox?.keyword,
+    opportunitySizeScore,
+    opportunitySizeTier,
     pop: fox?.metric.vol ?? idea.pop,
     diff: fox?.metric.diff ?? idea.diff,
     kwScore: fox ? Math.round(fox.score) : idea.kwScore,
@@ -108,7 +131,7 @@ function mergeIdea(idea: Idea): RankedIdea {
 export const ideas = rawIdeas
   .map(mergeIdea)
   .sort((a, b) => {
-    const bucketDiff = STATUS_BUCKET[a.status] - STATUS_BUCKET[b.status];
+    const bucketDiff = TIER_BUCKET[getIdeaTier(a)] - TIER_BUCKET[getIdeaTier(b)];
     if (bucketDiff !== 0) return bucketDiff;
     if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
     if ((b.vol ?? 0) !== (a.vol ?? 0)) return (b.vol ?? 0) - (a.vol ?? 0);

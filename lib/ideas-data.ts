@@ -22,6 +22,8 @@ export type Idea = {
   results?: number;
   foxScore?: number;
   foxKeyword?: string;
+  opportunitySizeScore?: number;
+  opportunitySizeTier?: "small" | "medium" | "large";
   pop: number;
   diff: number;
   kwScore: number;
