@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Idea, IdeaStatus, BuildTime } from "@/lib/ideas-data";
+import { getPlatformRecommendation } from "@/lib/platform-recommendation";
 import { generateCodexBuildPrompt } from "@/lib/prompt-generator";
 import {
   POLICY_GUIDE_BY_TAG,
@@ -61,6 +62,16 @@ const POLICY_RISK_STYLES: Record<PolicyRisk, string> = {
   low: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
   review: "bg-amber-500/10 text-amber-400 border-amber-500/20",
   high: "bg-red-500/10 text-red-400 border-red-500/20",
+};
+
+const PLATFORM_STYLES: Record<"expo" | "swiftui", string> = {
+  expo: "bg-cyan-500/10 text-cyan-300 border-cyan-500/20",
+  swiftui: "bg-violet-500/10 text-violet-300 border-violet-500/20",
+};
+
+const PLATFORM_TOOLTIPS: Record<"expo" | "swiftui", string> = {
+  expo: "Cross-platform first. Build in React Native + Expo so the idea can ship on iOS and Android from the same codebase.",
+  swiftui: "Apple-first. Build natively in SwiftUI when the core workflow depends on Apple-only APIs or platform integration.",
 };
 
 const OPPORTUNITY_SIZE_STYLES: Record<Exclude<OpportunitySizeFilter, "ALL">, string> = {
@@ -470,6 +481,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
           const tierCopy = TIER_COPY[tier];
           const isExpanded = expandedRank === idea.rank;
           const policyProfile = getPolicyProfile(idea);
+          const platform = getPlatformRecommendation(idea);
           const buildPrompt = isExpanded
             ? idea.buildPrompt ?? generateCodexBuildPrompt(idea, policyProfile)
             : "";
@@ -529,6 +541,12 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                       <span className={cn("hidden shrink-0 items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold border lg:inline-flex", POLICY_RISK_STYLES[policyProfile.risk])}>
                         <ShieldCheck className="h-3 w-3" />
                         {policyProfile.risk === "high" ? "High policy" : policyProfile.risk === "review" ? "Policy review" : "Standard policy"}
+                      </span>
+                      <span
+                        title={PLATFORM_TOOLTIPS[platform.kind]}
+                        className={cn("hidden shrink-0 items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold border lg:inline-flex cursor-help", PLATFORM_STYLES[platform.kind])}
+                      >
+                        {platform.shortLabel}
                       </span>
                     </div>
                     <p className={cn("text-xs text-zinc-500 line-clamp-1", blurMode && "blur-sm select-none")}>{idea.concept}</p>
@@ -597,6 +615,12 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                         >
                           <span className={cn("w-1.5 h-1.5 rounded-full", STATUS_COLORS[idea.status].dot)} />
                           {STATUS_LABELS[idea.status]}
+                        </span>
+                        <span
+                          title={PLATFORM_TOOLTIPS[platform.kind]}
+                          className={cn("inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border cursor-help", PLATFORM_STYLES[platform.kind])}
+                        >
+                          {platform.shortLabel}
                         </span>
                         <span className={cn("inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-zinc-800 border border-zinc-700", BUILD_COLORS[idea.buildTime])}>
                           <Timer className="h-3 w-3" />
@@ -712,9 +736,12 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                             )}
                           </div>
                           <div>
-                            <SectionHeader icon={Code} label="Implementation" />
+                            <SectionHeader icon={Code} label="Recommended Stack" />
+                            <p className="mb-3 text-xs leading-relaxed text-zinc-400">
+                              {platform.reason}
+                            </p>
                             <ul className="space-y-1.5">
-                              {idea.implementation.map((step, idx) => (
+                              {platform.stack.map((step, idx) => (
                                 <li key={idx} className="flex items-start gap-2.5 text-sm text-zinc-300">
                                   <span className="text-amber-500/60 mt-1 shrink-0 text-xs">&#9656;</span>
                                   {step}
@@ -755,6 +782,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                             {[
                               { label: "Group", value: idea.group },
                               { label: "Ranking KW", value: idea.rankingKeyword },
+                              { label: "Platform", value: platform.shortLabel },
                               { label: "Fox KW", value: idea.foxKeyword ?? "—" },
                               { label: "Vol", value: (idea.vol ?? idea.pop).toLocaleString() },
                               { label: "Chance", value: typeof idea.chance === "number" ? `${idea.chance}/100` : "—" },
@@ -850,7 +878,7 @@ function BuildPromptSection({ prompt, name }: { prompt: string; name: string }) 
           <span className="min-w-0">
             <span className="block text-sm font-semibold text-emerald-300">Codex Build Prompt</span>
             <span className="block truncate text-xs text-emerald-600">
-              Generated from product, market, stack, pricing, and policy data
+              Generated from product, market, platform, pricing, and policy data
             </span>
           </span>
           <ChevronDown className={cn("ml-auto h-4 w-4 shrink-0 text-emerald-500 transition-transform", expanded && "rotate-180")} />

@@ -1,4 +1,5 @@
 import type { Idea } from "@/lib/ideas-data";
+import { getPlatformRecommendation } from "@/lib/platform-recommendation";
 import {
   POLICY_GUIDE_BY_TAG,
   getPolicyProfile,
@@ -55,6 +56,7 @@ export function generateCodexBuildPrompt(
   idea: Idea,
   policyProfile: PolicyProfile = getPolicyProfile(idea)
 ) {
+  const platform = getPlatformRecommendation(idea);
   const policyTags = policyProfile.tags
     .map((tag) => POLICY_GUIDE_BY_TAG[tag].shortLabel)
     .join(", ");
@@ -67,6 +69,7 @@ Work style:
 - If there is no existing app, choose the best current production stack for the product:
   - Default to React Native + Expo with TypeScript and Expo Router for cross-platform consumer apps.
   - Use native SwiftUI when the product is clearly Apple-first, depends on Apple-only APIs, or benefits from deep platform integration.
+  - For cross-platform ideas, prefer the user's Expo boilerplate if one exists instead of scaffolding an old starter.
   - Use the newest stable version of the chosen stack and its modern app-router pattern, not an outdated starter template.
 - Implement the product, not a mockup. Stub only external paid services or credentials, and make those seams explicit.
 - Keep the first build focused. Do not add accounts, a backend, or social/community infrastructure unless they are required for the MVP below.
@@ -77,6 +80,8 @@ Product:
 - Category: ${idea.category}
 - Group: ${idea.group}
 - Primary keyword: ${idea.primaryKeyword}
+- Recommended platform: ${platform.label}
+- Platform reason: ${platform.reason}
 - Build size: ${BUILD_TIME_COPY[idea.buildTime]}
 - Pricing tier: ${idea.pricingTier}
 - Opportunity size tier: ${idea.opportunitySizeTier ?? "unknown"}
@@ -105,6 +110,9 @@ Build target:
 - If the opportunity size is large, preserve room for history, export, or premium depth.
 - If the opportunity size is medium or small, keep the MVP brutally focused and avoid optional subflows.
 - Treat the ranking data as a prioritization signal, not a product spec.
+- Treat the platform recommendation as the default stack choice unless the repo already proves a different one.
+- If the platform recommendation is Expo/RN, build the phone-first cross-platform MVP and defer Apple Watch, iMessage, widget, or other Apple-only bonus features unless they are core to the workflow.
+- If the platform recommendation is SwiftUI, lean into native Apple APIs and a first-class iPhone experience.
 
 Target keywords:
 ${asBullets(idea.targetKeywords)}
@@ -116,7 +124,7 @@ MVP scope:
 ${asBullets(idea.features)}
 
 Implementation direction:
-${asBullets(idea.implementation)}
+${asBullets(platform.stack)}
 
 User experience requirements:
 - The first screen should be the real product workflow, not a marketing page.
