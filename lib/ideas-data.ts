@@ -1404,7 +1404,7 @@ export const ideas: Idea[] = [
         qualifiedKeywordCount: 2,
         intentScore: 100,
         pop: 52, diff: 21, kwScore: 37, compReviews: 431, compScore: 15, totalScore: 58,
-        status: "SHIPPED",
+        status: "STRONG",
         buildTime: "week",
         pricingTier: "premium",
         pricing: { weekly: "$7.99", monthly: "$14.99", annual: "$49.99", trial: "7-day" },
@@ -1420,8 +1420,8 @@ export const ideas: Idea[] = [
         features: ["Reconstitution calculator for any peptide", "Dosage calculation with syringe units", "Injection site rotation tracker", "Dose logging and history", "Support for GLP-1, BPC-157, and more", "Quick reference drug database"],
         implementation: ["SwiftUI", "Dosage algorithms", "SwiftData for logging"],
         monetization: "Hard paywall — 1 free calc, premium for all peptides + logging. $7.99/week or $49.99/year.",
-        whyBuild: "RANKING AUDIT 2026-05-11: ranking keyword 'peptide calculator' is pop 52 / diff 21, with 219 App Store apps, 2 qualifying tracked keywords, and exact app-intent (100/100). Captured direct competition is manageable at 431 reviews. It stays below active ideas because it is already shipped.",
-        mergeNote: "SHIPPED as Peptidly (com.silpho.peptidly) by Silpho LLC."
+        whyBuild: "RANKING AUDIT 2026-05-11: ranking keyword 'peptide calculator' is pop 52 / diff 21, with 219 App Store apps, 2 qualifying tracked keywords, and exact app-intent (100/100). Captured direct competition is manageable at 431 reviews. It is an active opportunity, but it carries health / medical policy considerations.",
+        mergeNote: "Not shipped; earlier shipped label was incorrect."
       },
   {
         rank: 49,

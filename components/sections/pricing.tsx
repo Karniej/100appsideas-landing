@@ -30,7 +30,7 @@ const features = [
     icon: Check,
     text: "Competition rated: WEAK / MODERATE / STRONG",
   },
-  { icon: Check, text: "6 already shipped to prove the methodology works" },
+  { icon: Check, text: "5 already shipped to prove the methodology works" },
 ];
 
 const PricingSection = () => {

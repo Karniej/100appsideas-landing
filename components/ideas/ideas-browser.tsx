@@ -48,6 +48,13 @@ const STATUS_COLORS: Record<IdeaStatus, { border: string; bg: string; text: stri
 const BUILD_LABELS: Record<BuildTime, string> = { weekend: "< 2 days", week: "3-7 days", complex: "1-2 weeks", ai: "2+ weeks (AI)" };
 const BUILD_COLORS: Record<BuildTime, string> = { weekend: "text-emerald-400", week: "text-amber-400", complex: "text-orange-400", ai: "text-violet-400" };
 const STATUS_LABELS: Record<IdeaStatus, string> = { SHIPPED: "Already shipped", WEAK: "Weak signal", MODERATE: "Moderate signal", STRONG: "Strong signal", DEAD: "No search volume" };
+const STATUS_TOOLTIPS: Record<IdeaStatus, string> = {
+  SHIPPED: "Already built and shipped. Kept as proof and reference, not as a fresh idea.",
+  WEAK: "Borderline opportunity: weaker intent, weaker FoxData merge, or more saturation.",
+  MODERATE: "Valid opportunity signal, but not strong enough to treat as a top-tier build without extra wedge or distribution.",
+  STRONG: "Best opportunity signal in this list: strong FoxData merge, clean intent, and acceptable saturation.",
+  DEAD: "Rejected or monitor-only. Not worth building now based on the merged ranking.",
+};
 const PRICING_LABELS: Record<string, string> = { entry: "Entry", standard: "Standard", premium: "Premium" };
 const POLICY_RISK_LABELS: Record<PolicyRisk, string> = { low: "Low policy risk", review: "Needs review", high: "High policy risk" };
 const POLICY_RISK_STYLES: Record<PolicyRisk, string> = {
@@ -57,7 +64,7 @@ const POLICY_RISK_STYLES: Record<PolicyRisk, string> = {
 };
 
 const OPPORTUNITY_SIZE_STYLES: Record<Exclude<OpportunitySizeFilter, "ALL">, string> = {
-  small: "bg-zinc-900 text-zinc-500 border-zinc-800 hover:text-zinc-300 hover:border-zinc-700",
+  small: "bg-sky-500/10 text-sky-300 border-sky-500/20",
   medium: "bg-amber-500/10 text-amber-400 border-amber-500/20",
   large: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
 };
@@ -135,9 +142,6 @@ function AnimatedNumber({ value, label }: { value: number; label: string }) {
 const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("ALL");
-  const [selectedStatus, setSelectedStatus] = useState("ALL");
-  const [selectedBuildTime, setSelectedBuildTime] = useState("ALL");
-  const [selectedPolicyRisk, setSelectedPolicyRisk] = useState<PolicyRisk | "ALL">("ALL");
   const [selectedOpportunitySize, setSelectedOpportunitySize] = useState<OpportunitySizeFilter>("ALL");
   const [sortBy, setSortBy] = useState<SortOption>("rank");
   const [expandedRank, setExpandedRank] = useState<number | null>(null);
@@ -182,9 +186,6 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
       );
     }
     if (selectedCategory !== "ALL") result = result.filter((i) => i.category === selectedCategory);
-    if (selectedStatus !== "ALL") result = result.filter((i) => i.status === selectedStatus);
-    if (selectedBuildTime !== "ALL") result = result.filter((i) => i.buildTime === selectedBuildTime);
-    if (selectedPolicyRisk !== "ALL") result = result.filter((i) => getPolicyProfile(i).risk === selectedPolicyRisk);
     if (selectedOpportunitySize !== "ALL") result = result.filter((i) => i.opportunitySizeTier === selectedOpportunitySize);
 
     switch (sortBy) {
@@ -195,19 +196,16 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
       case "competition": result.sort((a, b) => a.compReviews - b.compReviews); break;
     }
     return result;
-  }, [ideas, searchQuery, selectedCategory, selectedStatus, selectedBuildTime, selectedPolicyRisk, selectedOpportunitySize, sortBy]);
+  }, [ideas, searchQuery, selectedCategory, selectedOpportunitySize, sortBy]);
 
   const clearFilters = () => {
     setSearchQuery("");
     setSelectedCategory("ALL");
-    setSelectedStatus("ALL");
-    setSelectedBuildTime("ALL");
-    setSelectedPolicyRisk("ALL");
     setSelectedOpportunitySize("ALL");
     setSortBy("rank");
   };
 
-  const hasActiveFilters = searchQuery || selectedCategory !== "ALL" || selectedStatus !== "ALL" || selectedBuildTime !== "ALL" || selectedPolicyRisk !== "ALL" || selectedOpportunitySize !== "ALL" || sortBy !== "rank";
+  const hasActiveFilters = searchQuery || selectedCategory !== "ALL" || selectedOpportunitySize !== "ALL" || sortBy !== "rank";
 
   // Scroll expanded item into view
   useEffect(() => {
@@ -338,81 +336,6 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
 
         {/* Filter row */}
         <div className="flex flex-wrap items-center gap-2">
-          {/* Opportunity signal pills */}
-          {([
-            { key: "ALL", label: "All", desc: null },
-            { key: "WEAK", label: "Weak", desc: "Qualifies, but has low score, weak cluster, or saturation risk" },
-            { key: "MODERATE", label: "Moderate", desc: "Survives the stricter ranking score" },
-            { key: "STRONG", label: "Strong", desc: "Best active opportunity signals" },
-          ] as const).map((s) => (
-            <button
-              key={s.key}
-              onClick={() => setSelectedStatus(s.key)}
-              title={s.desc || undefined}
-              className={cn(
-                "px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-200",
-                selectedStatus === s.key
-                  ? s.key === "ALL"
-                    ? "bg-white/10 text-white border-white/20"
-                    : `${STATUS_COLORS[s.key as IdeaStatus].bg} ${STATUS_COLORS[s.key as IdeaStatus].text} border-current/20`
-                  : "bg-zinc-900 text-zinc-500 border-zinc-800 hover:text-zinc-300 hover:border-zinc-700"
-              )}
-            >
-              {s.label}
-              <span className="ml-1.5 opacity-60">{statusCounts[s.key] || 0}</span>
-            </button>
-          ))}
-
-          <div className="w-px h-5 bg-zinc-800 mx-1 hidden sm:block" />
-
-          {/* Build effort pills */}
-          {([
-            { key: "ALL" as const, label: "Any effort" },
-            { key: "weekend" as const, label: "< 2 days" },
-            { key: "week" as const, label: "3-7 days" },
-            { key: "complex" as const, label: "1-2 weeks" },
-            { key: "ai" as const, label: "2+ weeks (needs AI)" },
-          ]).map((bt) => (
-            <button
-              key={bt.key}
-              onClick={() => setSelectedBuildTime(bt.key)}
-              className={cn(
-                "px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-200",
-                selectedBuildTime === bt.key
-                  ? "bg-amber-500/10 text-amber-400 border-amber-500/20"
-                  : "bg-zinc-900 text-zinc-500 border-zinc-800 hover:text-zinc-300 hover:border-zinc-700"
-              )}
-            >
-              {bt.label}
-            </button>
-          ))}
-
-          <div className="w-px h-5 bg-zinc-800 mx-1 hidden sm:block" />
-
-          {([
-            { key: "ALL" as const, label: "Any policy" },
-            { key: "low" as const, label: `Low (${policyCounts.low})` },
-            { key: "review" as const, label: `Review (${policyCounts.review})` },
-            { key: "high" as const, label: `High (${policyCounts.high})` },
-          ]).map((risk) => (
-            <button
-              key={risk.key}
-              onClick={() => setSelectedPolicyRisk(risk.key)}
-              className={cn(
-                "px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-200",
-                selectedPolicyRisk === risk.key
-                  ? risk.key === "ALL"
-                    ? "bg-white/10 text-white border-white/20"
-                    : POLICY_RISK_STYLES[risk.key]
-                  : "bg-zinc-900 text-zinc-500 border-zinc-800 hover:text-zinc-300 hover:border-zinc-700"
-              )}
-            >
-              {risk.label}
-            </button>
-          ))}
-
-          <div className="w-px h-5 bg-zinc-800 mx-1 hidden sm:block" />
-
           {/* Opportunity size pills */}
           {([
             { key: "ALL" as const, label: "Any size" },
@@ -428,7 +351,7 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                 selectedOpportunitySize === size.key
                   ? size.key === "ALL"
                     ? "bg-white/10 text-white border-white/20"
-                    : OPPORTUNITY_SIZE_STYLES[size.key]
+                    : `${OPPORTUNITY_SIZE_STYLES[size.key]} ring-1 ring-current/10`
                   : "bg-zinc-900 text-zinc-500 border-zinc-800 hover:text-zinc-300 hover:border-zinc-700"
               )}
             >
@@ -596,7 +519,10 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                       <h3 className={cn("font-heading font-semibold text-white text-sm md:text-base truncate", blurMode && "blur-sm select-none")}>
                         {idea.name}
                       </h3>
-                      <span className={cn("shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold border", STATUS_COLORS[idea.status].bg, STATUS_COLORS[idea.status].text, "border-current/20")}>
+                      <span
+                        title={STATUS_TOOLTIPS[idea.status]}
+                        className={cn("shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold border cursor-help", STATUS_COLORS[idea.status].bg, STATUS_COLORS[idea.status].text, "border-current/20")}
+                      >
                         <span className={cn("w-1 h-1 rounded-full", STATUS_COLORS[idea.status].dot)} />
                         {STATUS_LABELS[idea.status]}
                       </span>
@@ -665,7 +591,10 @@ const IdeasBrowser = ({ ideas }: IdeasBrowserProps) => {
                     <div className="px-5 pb-6 pt-2 border-t border-zinc-800/60 space-y-6">
                       {/* Badges */}
                       <div className="flex flex-wrap gap-2">
-                        <span className={cn("inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border", STATUS_COLORS[idea.status].bg, STATUS_COLORS[idea.status].text, "border-current/20")}>
+                        <span
+                          title={STATUS_TOOLTIPS[idea.status]}
+                          className={cn("inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border cursor-help", STATUS_COLORS[idea.status].bg, STATUS_COLORS[idea.status].text, "border-current/20")}
+                        >
                           <span className={cn("w-1.5 h-1.5 rounded-full", STATUS_COLORS[idea.status].dot)} />
                           {STATUS_LABELS[idea.status]}
                         </span>
