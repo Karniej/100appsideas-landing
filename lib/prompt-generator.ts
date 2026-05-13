@@ -64,7 +64,10 @@ export function generateCodexBuildPrompt(
 
 Work style:
 - If you are inside an existing repo, first inspect AGENTS.md, package/project files, the app structure, and existing UI patterns. Reuse the current stack and conventions.
-- If there is no existing app, create a native iOS SwiftUI app unless the user has explicitly provided another platform.
+- If there is no existing app, choose the best current production stack for the product:
+  - Default to React Native + Expo with TypeScript and Expo Router for cross-platform consumer apps.
+  - Use native SwiftUI when the product is clearly Apple-first, depends on Apple-only APIs, or benefits from deep platform integration.
+  - Use the newest stable version of the chosen stack and its modern app-router pattern, not an outdated starter template.
 - Implement the product, not a mockup. Stub only external paid services or credentials, and make those seams explicit.
 - Keep the first build focused. Do not add accounts, a backend, or social/community infrastructure unless they are required for the MVP below.
 - After implementation, run the relevant build/typecheck/test command and report any remaining gaps.
@@ -119,6 +122,9 @@ User experience requirements:
 - The first screen should be the real product workflow, not a marketing page.
 - Make the primary action obvious within one screen.
 - Use the core keyword and competitor positioning to choose the opening screen and the default state.
+- Always include a proper onboarding flow with lightweight animations that explains the value quickly, then transitions naturally into the paywall.
+- If the product monetizes with subscriptions, wire the paywall through RevenueCat rather than a hand-rolled billing layer.
+- The paywall should show price, billing period, trial length if any, renewal language, and a restore-purchases action.
 - Include polished empty states, loading states, error states, and at least a small amount of sample or seed data where useful.
 - Prefer local-first behavior for the first version. Add sync, cloud storage, or accounts only if the MVP cannot function without them.
 - Use a restrained, modern interface appropriate for "${idea.category}" rather than a generic template.
@@ -130,7 +136,9 @@ Monetization:
 - Monthly: ${idea.pricing.monthly}
 - Annual: ${idea.pricing.annual}
 - Trial: ${idea.pricing.trial}
-- Implement a clear premium boundary. If StoreKit cannot be fully wired in this environment, create a clean paywall and subscription abstraction that can be connected later.
+- Implement a clear premium boundary.
+- Use RevenueCat for subscription handling and paywall state whenever the product has subscriptions or trials.
+- If the billing layer cannot be fully wired in this environment, create a clean RevenueCat-ready abstraction and a production-style paywall that can be connected later.
 
 Policy and launch constraints:
 - Risk level: ${policyProfile.risk}
